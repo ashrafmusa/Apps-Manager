@@ -1,4 +1,6 @@
 using System;
+using ExcellCore.Domain.Data;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -6,6 +8,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ExcellCore.Domain.Data.Migrations
 {
     /// <inheritdoc />
+    [DbContext(typeof(ExcellCoreContext))]
+    [Migration("20260103190000_202601031930_M9OrdersResults")]
     public partial class _202601031930_M9OrdersResults : Migration
     {
         /// <inheritdoc />
