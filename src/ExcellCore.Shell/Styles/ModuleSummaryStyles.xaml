@@ -1,0 +1,67 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <SolidColorBrush x:Key="SummaryCardNeutralBackgroundBrush" Color="#FFF5F5F5" />
+  <SolidColorBrush x:Key="SummaryCardNeutralBorderBrush" Color="#FFE0E0E0" />
+
+  <SolidColorBrush x:Key="SummaryCardWarningBackgroundBrush" Color="#FFFFF4F1" />
+  <SolidColorBrush x:Key="SummaryCardWarningBorderBrush" Color="#FFF0B8A0" />
+
+  <SolidColorBrush x:Key="SummaryCardSuccessBackgroundBrush" Color="#FFEAF8F1" />
+  <SolidColorBrush x:Key="SummaryCardSuccessBorderBrush" Color="#FFC6EBD7" />
+
+  <SolidColorBrush x:Key="SummaryCardLabelBrush" Color="Gray" />
+  <SolidColorBrush x:Key="SummaryCardWarningLabelBrush" Color="#FFB26B00" />
+  <SolidColorBrush x:Key="SummaryCardSuccessLabelBrush" Color="#FF0B7A75" />
+
+  <Style x:Key="ModuleSummaryCardBaseStyle" TargetType="Border">
+    <Setter Property="Padding" Value="12" />
+    <Setter Property="Margin" Value="0,0,12,0" />
+    <Setter Property="Background" Value="{StaticResource SummaryCardNeutralBackgroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource SummaryCardNeutralBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style x:Key="ModuleSummaryCardNeutralStyle" TargetType="Border" BasedOn="{StaticResource ModuleSummaryCardBaseStyle}" />
+
+  <Style x:Key="ModuleSummaryCardWarningStyle" TargetType="Border" BasedOn="{StaticResource ModuleSummaryCardBaseStyle}">
+    <Setter Property="Background" Value="{StaticResource SummaryCardWarningBackgroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource SummaryCardWarningBorderBrush}" />
+  </Style>
+
+  <Style x:Key="ModuleSummaryCardSuccessStyle" TargetType="Border" BasedOn="{StaticResource ModuleSummaryCardBaseStyle}">
+    <Setter Property="Background" Value="{StaticResource SummaryCardSuccessBackgroundBrush}" />
+    <Setter Property="BorderBrush" Value="{StaticResource SummaryCardSuccessBorderBrush}" />
+  </Style>
+
+  <Style x:Key="ModuleSummaryLabelStyle" TargetType="TextBlock">
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Foreground" Value="{StaticResource SummaryCardLabelBrush}" />
+  </Style>
+
+  <Style x:Key="ModuleSummaryLabelWarningStyle" TargetType="TextBlock" BasedOn="{StaticResource ModuleSummaryLabelStyle}">
+    <Setter Property="Foreground" Value="{StaticResource SummaryCardWarningLabelBrush}" />
+  </Style>
+
+  <Style x:Key="ModuleSummaryLabelSuccessStyle" TargetType="TextBlock" BasedOn="{StaticResource ModuleSummaryLabelStyle}">
+    <Setter Property="Foreground" Value="{StaticResource SummaryCardSuccessLabelBrush}" />
+  </Style>
+
+  <Style x:Key="ModuleSummaryValueStyle" TargetType="TextBlock">
+    <Setter Property="FontSize" Value="18" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <DataTemplate x:Key="LookupComboBoxItemTemplate">
+    <StackPanel>
+      <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding ContextSummary}" Style="{StaticResource ModuleSummaryLabelStyle}" />
+    </StackPanel>
+  </DataTemplate>
+
+  <Style x:Key="LookupComboBoxStyle" TargetType="ComboBox">
+    <Setter Property="MinWidth" Value="240" />
+    <Setter Property="Padding" Value="4" />
+    <Setter Property="ItemTemplate" Value="{StaticResource LookupComboBoxItemTemplate}" />
+    <Setter Property="DisplayMemberPath" Value="DisplayLabel" />
+  </Style>
+</ResourceDictionary>

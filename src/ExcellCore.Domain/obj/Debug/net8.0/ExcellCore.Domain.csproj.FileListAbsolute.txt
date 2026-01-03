@@ -1,0 +1,14 @@
+D:\Apps Manager\src\ExcellCore.Domain\bin\Debug\net8.0\ExcellCore.Domain.deps.json
+D:\Apps Manager\src\ExcellCore.Domain\bin\Debug\net8.0\ExcellCore.Domain.runtimeconfig.json
+D:\Apps Manager\src\ExcellCore.Domain\bin\Debug\net8.0\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Domain\bin\Debug\net8.0\ExcellCore.Domain.pdb
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.csproj.AssemblyReference.cache
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.AssemblyInfoInputs.cache
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.AssemblyInfo.cs
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.csproj.CoreCompileInputs.cache
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\refint\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.pdb
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.genruntimeconfig.cache
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ref\ExcellCore.Domain.dll

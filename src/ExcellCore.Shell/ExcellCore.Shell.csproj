@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>ExcellCore.Shell</RootNamespace>
+    <ApplicationIcon></ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcellCore.Infrastructure\ExcellCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\ExcellCore.Domain\ExcellCore.Domain.csproj" />
+    <ProjectReference Include="..\ExcellCore.Module.Abstractions\ExcellCore.Module.Abstractions.csproj" />
+    <ProjectReference Include="..\ExcellCore.Module.Core.Identity\ExcellCore.Module.Core.Identity.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.Core.Agreements\ExcellCore.Module.Core.Agreements.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.Core.Inventory\ExcellCore.Module.Core.Inventory.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.Core.Financials\ExcellCore.Module.Core.Financials.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.IS.Clinical\ExcellCore.Module.IS.Clinical.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.IS.Retail\ExcellCore.Module.IS.Retail.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.IS.Corporate\ExcellCore.Module.IS.Corporate.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.Extensions.Sync\ExcellCore.Module.Extensions.Sync.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcellCore.Module.Extensions.Reporting\ExcellCore.Module.Extensions.Reporting.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="modules\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

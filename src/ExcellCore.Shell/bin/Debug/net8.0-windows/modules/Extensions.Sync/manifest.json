@@ -1,0 +1,6 @@
+{
+  "ModuleId": "Extensions.Sync",
+  "DisplayName": "Sync Center",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.Extensions.Sync.dll",
+  "Enabled": true
+}

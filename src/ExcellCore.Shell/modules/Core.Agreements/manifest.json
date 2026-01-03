@@ -1,0 +1,6 @@
+{
+  "ModuleId": "Core.Agreements",
+  "DisplayName": "Agreement Engine",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.Core.Agreements.dll",
+  "Enabled": true
+}

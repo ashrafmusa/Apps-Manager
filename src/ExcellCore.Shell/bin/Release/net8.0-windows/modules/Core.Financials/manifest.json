@@ -1,0 +1,6 @@
+{
+  "ModuleId": "Core.Financials",
+  "DisplayName": "Financial Engine",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.Core.Financials.dll",
+  "Enabled": true
+}

@@ -1,0 +1,17 @@
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Module.Core.Identity.deps.json
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Module.Core.Identity.dll
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Module.Core.Identity.pdb
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Module.Abstractions.dll
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Domain.pdb
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\bin\Debug\net8.0\ExcellCore.Module.Abstractions.pdb
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.csproj.AssemblyReference.cache
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.GeneratedMSBuildEditorConfig.editorconfig
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.AssemblyInfoInputs.cache
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.AssemblyInfo.cs
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.csproj.CoreCompileInputs.cache
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCo.68BD182B.Up2Date
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.dll
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\refint\ExcellCore.Module.Core.Identity.dll
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ExcellCore.Module.Core.Identity.pdb
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0\ref\ExcellCore.Module.Core.Identity.dll

@@ -1,0 +1,6 @@
+{
+  "ModuleId": "Core.Inventory",
+  "DisplayName": "Inventory Kernel",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.Core.Inventory.dll",
+  "Enabled": true
+}

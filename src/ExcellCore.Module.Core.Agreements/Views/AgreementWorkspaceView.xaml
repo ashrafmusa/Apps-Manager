@@ -1,0 +1,735 @@
+<UserControl x:Class="ExcellCore.Module.Core.Agreements.Views.AgreementWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="RootControl"
+             mc:Ignorable="d"
+             Loaded="OnLoaded">
+  <ScrollViewer VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled">
+    <Grid Margin="16">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <StackPanel Orientation="Horizontal"
+                  Margin="0,0,0,12">
+        <TextBlock Text="{Binding DataContext.Localization[AgreementsTitle], ElementName=RootControl, FallbackValue=Agreement Engine}"
+                   FontSize="18"
+                   FontWeight="SemiBold"/>
+        <TextBlock Text="{Binding DataContext.Localization[AgreementsModuleBadge], ElementName=RootControl, FallbackValue=(Core Module)}"
+                   FontSize="14"
+                   Foreground="Gray"
+                   VerticalAlignment="Bottom"
+                   Margin="8,0,0,0"/>
+      </StackPanel>
+
+      <UniformGrid Grid.Row="1"
+                   Columns="5"
+                   Margin="0,0,0,12">
+        <Border Style="{StaticResource ModuleSummaryCardSuccessStyle}">
+          <StackPanel>
+            <TextBlock Text="{Binding DataContext.Localization[SummaryActiveAgreements], ElementName=RootControl, FallbackValue=Active Agreements}"
+                       Style="{StaticResource ModuleSummaryLabelSuccessStyle}"/>
+            <TextBlock Text="{Binding Dashboard.ActiveAgreements}"
+                       Style="{StaticResource ModuleSummaryValueStyle}"/>
+          </StackPanel>
+        </Border>
+        <Border Style="{StaticResource ModuleSummaryCardWarningStyle}">
+          <StackPanel>
+            <TextBlock Text="{Binding DataContext.Localization[SummaryPendingApprovals], ElementName=RootControl, FallbackValue=Pending Approvals}"
+                       Style="{StaticResource ModuleSummaryLabelWarningStyle}"/>
+            <TextBlock Text="{Binding Dashboard.PendingApprovals}"
+                       Style="{StaticResource ModuleSummaryValueStyle}"/>
+          </StackPanel>
+        </Border>
+        <Border Style="{StaticResource ModuleSummaryCardWarningStyle}">
+          <StackPanel>
+            <TextBlock Text="{Binding DataContext.Localization[SummaryRenewals], ElementName=RootControl, FallbackValue=Renewals (30d)}"
+                       Style="{StaticResource ModuleSummaryLabelWarningStyle}"/>
+            <TextBlock Text="{Binding Dashboard.RenewalsDueSoon}"
+                       Style="{StaticResource ModuleSummaryValueStyle}"/>
+          </StackPanel>
+        </Border>
+        <Border Style="{StaticResource ModuleSummaryCardNeutralStyle}">
+          <StackPanel>
+            <TextBlock Text="{Binding DataContext.Localization[SummaryAvgDiscount], ElementName=RootControl, FallbackValue=Avg Discount}"
+                       Style="{StaticResource ModuleSummaryLabelStyle}"/>
+            <TextBlock Text="{Binding Dashboard.AverageDiscountPercent, StringFormat={}{0:N1}%}"
+                       Style="{StaticResource ModuleSummaryValueStyle}"/>
+          </StackPanel>
+        </Border>
+        <Border Style="{StaticResource ModuleSummaryCardNeutralStyle}">
+          <StackPanel>
+            <TextBlock Text="{Binding DataContext.Localization[SummaryPricingRuns], ElementName=RootControl, FallbackValue=Pricing Runs}"
+                       Style="{StaticResource ModuleSummaryLabelStyle}"/>
+            <TextBlock Text="{Binding Dashboard.PricingRunsToday}"
+                       Style="{StaticResource ModuleSummaryValueStyle}"/>
+          </StackPanel>
+        </Border>
+      </UniformGrid>
+
+      <ItemsControl Grid.Row="2"
+                    ItemsSource="{Binding TriageCards}"
+                    Margin="0,0,0,12">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Border Margin="0,0,12,12"
+                    Padding="16"
+                    Background="#FFF9FBFF"
+                    BorderBrush="#FFCBD8FF"
+                    BorderThickness="1"
+                    CornerRadius="8">
+              <StackPanel>
+                <TextBlock Text="{Binding AgreementName}"
+                           FontWeight="SemiBold"
+                           FontSize="14"/>
+                <TextBlock Text="{Binding Approver}"
+                           Foreground="#FF2F4F94"
+                           Margin="0,2,0,0"/>
+                <TextBlock Text="{Binding ImpactSummary}"
+                           Foreground="Gray"
+                           Margin="0,6,0,0"
+                           TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding ImpactDetails}"
+                           Foreground="#FF5B7085"
+                           FontSize="12"
+                           Margin="0,2,0,0"
+                           TextWrapping="Wrap"/>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,6,0,0">
+                  <TextBlock Text="{Binding DataContext.Localization[NetLabel], ElementName=RootControl, FallbackValue=Net}"
+                             FontWeight="SemiBold"/>
+                  <TextBlock Text=":"
+                             Margin="4,0,0,0"/>
+                  <TextBlock Text="{Binding PotentialValueDisplay}"
+                             Margin="4,0,0,0"/>
+                </StackPanel>
+                <TextBlock Text="{Binding AgingDisplay}"
+                           Foreground="#FF0B7A75"
+                           Margin="0,4,0,0"/>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,12,0,0">
+                  <Button Content="{Binding DataContext.Localization[RemindApproverButton], ElementName=RootControl, FallbackValue=Remind Approver}"
+                          Command="{Binding RemindCommand}"
+                          MinWidth="120"/>
+                  <Button Content="{Binding DataContext.Localization[FastTrackButton], ElementName=RootControl, FallbackValue=Fast-Track}"
+                          Command="{Binding FastTrackCommand}"
+                          Margin="8,0,0,0"
+                          MinWidth="90"
+                          IsEnabled="{Binding CanFastTrack}"/>
+                </StackPanel>
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+      <Grid Grid.Row="3"
+            Margin="0,0,0,12">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="3*"/>
+          <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Background="#FFF9FBFF"
+                BorderBrush="#FFCBD8FF"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16"
+                Margin="0,0,12,0">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="{Binding DataContext.Localization[SlaHeatMapTitle], ElementName=RootControl, FallbackValue=SLA Heat Map}"
+                       FontWeight="SemiBold"
+                       FontSize="14"/>
+
+            <ItemsControl x:Name="HeatMapItems"
+                          Grid.Row="1"
+                          Margin="0,12,0,0"
+                          ItemsSource="{Binding TriageHeatMap}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <UniformGrid Columns="5"/>
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Margin="0,0,12,12"
+                          Padding="12"
+                          CornerRadius="6"
+                          Background="{Binding HeatBrush}">
+                    <StackPanel>
+                      <TextBlock Text="{Binding Label}"
+                                 FontWeight="SemiBold"/>
+                      <TextBlock Text="{Binding PendingDisplay}"/>
+                      <TextBlock Text="{Binding PotentialDisplay}"
+                                 FontSize="12"/>
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Grid.Row="1"
+                       Text="{Binding DataContext.Localization[SlaHeatMapEmpty], ElementName=RootControl, FallbackValue=No pending approvals to score.}"
+                       Foreground="Gray"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+              <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                  <Setter Property="Visibility"
+                          Value="Collapsed"/>
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=HeatMapItems, Path=HasItems}"
+                                 Value="False">
+                      <Setter Property="Visibility"
+                              Value="Visible"/>
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+          </Grid>
+        </Border>
+
+        <Border Grid.Column="1"
+                Background="#FFFBFAF5"
+                BorderBrush="#FFEEDFCC"
+                BorderThickness="1"
+                CornerRadius="8"
+                Padding="16">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="{Binding DataContext.Localization[ReminderFastTrackTitle], ElementName=RootControl, FallbackValue=Reminder &amp; Fast-Track Activity}"
+                       FontWeight="SemiBold"
+                       FontSize="14"/>
+
+            <ItemsControl x:Name="InsightItems"
+                          Grid.Row="1"
+                          Margin="0,12,0,0"
+                          ItemsSource="{Binding TriageActionInsights}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Margin="0,0,0,12"
+                          Padding="12"
+                          CornerRadius="6"
+                          BorderBrush="#FFEEDFCC"
+                          BorderThickness="1">
+                    <StackPanel>
+                      <TextBlock Text="{Binding Title}"
+                                 FontWeight="SemiBold"/>
+                      <TextBlock Text="{Binding WeeklyDeltaDisplay}"
+                                 Foreground="{Binding TrendBrush}"
+                                 Margin="0,2,0,0"/>
+                      <TextBlock Text="{Binding MonthlyTotalDisplay}"
+                                 FontSize="12"
+                                 Margin="0,2,0,0"/>
+                      <TextBlock Text="{Binding MostRecentDisplay}"
+                                 FontSize="12"
+                                 Foreground="#FF5B7085"
+                                 Margin="0,2,0,0"/>
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Grid.Row="1"
+                       Text="{Binding DataContext.Localization[ReminderFastTrackEmpty], ElementName=RootControl, FallbackValue=No recent reminder or fast-track activity.}"
+                       Foreground="Gray"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+              <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                  <Setter Property="Visibility"
+                          Value="Collapsed"/>
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=InsightItems, Path=HasItems}"
+                                 Value="False">
+                      <Setter Property="Visibility"
+                              Value="Visible"/>
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+          </Grid>
+        </Border>
+      </Grid>
+
+      <Grid Grid.Row="4">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="0"
+                    Margin="0,0,12,0">
+          <TextBox Width="220"
+                   Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                   Margin="0,0,8,0"/>
+          <Button Content="{Binding DataContext.Localization[SearchButton], ElementName=RootControl, FallbackValue=Search}"
+                  Width="80"
+                  Command="{Binding SearchCommand}"/>
+          <Button Content="{Binding DataContext.Localization[NewButton], ElementName=RootControl, FallbackValue=New}"
+                  Width="60"
+                  Margin="8,0,0,0"
+                  Command="{Binding NewCommand}"/>
+          <Button Content="{Binding DataContext.Localization[SaveButton], ElementName=RootControl, FallbackValue=Save}"
+                  Width="80"
+                  Margin="8,0,0,0"
+                  Command="{Binding SaveCommand}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"
+                    HorizontalAlignment="Right">
+          <TextBlock Text="{Binding StatusMessage}"
+                     Foreground="Gray"
+                     HorizontalAlignment="Right"/>
+          <TextBlock Text="{Binding Notification}"
+                     Foreground="#FF0B7A75"
+                     FontWeight="SemiBold"
+                     HorizontalAlignment="Right"/>
+        </StackPanel>
+      </Grid>
+
+      <Grid Grid.Row="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="2*"/>
+          <ColumnDefinition Width="48"/>
+          <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid ItemsSource="{Binding Agreements}"
+                  SelectedItem="{Binding SelectedAgreement, Mode=TwoWay}"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="Column"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  Grid.Column="0"
+                  BorderBrush="#FFDDDDDD"
+                  BorderThickness="1">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="{Binding DataContext.Localization[AgreementColumn], ElementName=RootControl, FallbackValue=Agreement}"
+                                Binding="{Binding AgreementName}"
+                                Width="*"/>
+            <DataGridTextColumn Header="{Binding DataContext.Localization[PayerColumn], ElementName=RootControl, FallbackValue=Payer}"
+                                Binding="{Binding PayerName}"
+                                Width="200"/>
+            <DataGridTextColumn Header="{Binding DataContext.Localization[EffectiveColumn], ElementName=RootControl, FallbackValue=Effective}"
+                                Binding="{Binding EffectiveFrom}"
+                                Width="140"/>
+            <DataGridTextColumn Header="{Binding DataContext.Localization[ExpiresColumn], ElementName=RootControl, FallbackValue=Expires}"
+                                Binding="{Binding EffectiveTo}"
+                                Width="140"/>
+            <DataGridTextColumn Header="{Binding DataContext.Localization[StatusColumn], ElementName=RootControl, FallbackValue=Status}"
+                                Binding="{Binding Status}"
+                                Width="140"/>
+            <DataGridTextColumn Header="{Binding DataContext.Localization[RatesColumn], ElementName=RootControl, FallbackValue=Rates}"
+                                Binding="{Binding RateCount}"
+                                Width="80"/>
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Column="2"
+                BorderBrush="#FFDDDDDD"
+                BorderThickness="1"
+                Padding="16">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="{Binding DataContext.Localization[AgreementDetailsHeader], ElementName=RootControl, FallbackValue=Agreement Details}"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Margin="0,0,0,12"/>
+
+            <Grid Grid.Row="1"
+                  Margin="0,0,0,12">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0"
+                          Margin="0,0,12,0">
+                <TextBlock Text="{Binding DataContext.Localization[AgreementNameLabel], ElementName=RootControl, FallbackValue=Agreement Name}"/>
+                <TextBox Text="{Binding Form.AgreementName, UpdateSourceTrigger=PropertyChanged}"/>
+              </StackPanel>
+              <StackPanel Grid.Column="1">
+                <TextBlock Text="{Binding DataContext.Localization[PayerLabel], ElementName=RootControl, FallbackValue=Payer}"/>
+                <TextBox Text="{Binding Form.PayerName, UpdateSourceTrigger=PropertyChanged}"/>
+              </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="2"
+                  Margin="0,0,0,12">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0"
+                          Margin="0,0,12,0">
+                <TextBlock Text="{Binding DataContext.Localization[CoverageTypeLabel], ElementName=RootControl, FallbackValue=Coverage Type}"/>
+                <ComboBox ItemsSource="{Binding CoverageTypes}"
+                          SelectedItem="{Binding Form.CoverageType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+              </StackPanel>
+              <StackPanel Grid.Column="1"
+                          Margin="0,0,12,0">
+                <TextBlock Text="{Binding DataContext.Localization[EffectiveFromLabel], ElementName=RootControl, FallbackValue=Effective From}"/>
+                <DatePicker SelectedDate="{Binding Form.EffectiveFrom, Mode=TwoWay}"/>
+              </StackPanel>
+              <StackPanel Grid.Column="2">
+                <TextBlock Text="{Binding DataContext.Localization[EffectiveToLabel], ElementName=RootControl, FallbackValue=Effective To}"/>
+                <DatePicker SelectedDate="{Binding Form.EffectiveTo, Mode=TwoWay}"/>
+              </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="3"
+                  Margin="0,0,0,12">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0"
+                          Margin="0,0,12,0">
+                <TextBlock Text="{Binding DataContext.Localization[StatusLabel], ElementName=RootControl, FallbackValue=Status}"/>
+                <ComboBox ItemsSource="{Binding WorkflowStatuses}"
+                          SelectedItem="{Binding Form.Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+              </StackPanel>
+              <StackPanel Grid.Column="1"
+                          Margin="0,0,12,0">
+                <TextBlock Text="{Binding DataContext.Localization[RenewalDateLabel], ElementName=RootControl, FallbackValue=Renewal Date}"/>
+                <DatePicker SelectedDate="{Binding Form.RenewalDate, Mode=TwoWay}"/>
+              </StackPanel>
+              <StackPanel Grid.Column="2"
+                          Margin="0,0,12,0">
+                <TextBlock Text="{Binding DataContext.Localization[LastRenewedLabel], ElementName=RootControl, FallbackValue=Last Renewed}"/>
+                <DatePicker SelectedDate="{Binding Form.LastRenewedOn, Mode=TwoWay}"/>
+              </StackPanel>
+              <StackPanel Grid.Column="3"
+                          Margin="0,18,0,0">
+                <CheckBox Content="{Binding DataContext.Localization[RequiresApprovalLabel], ElementName=RootControl, FallbackValue=Requires Approval}"
+                          IsChecked="{Binding Form.RequiresApproval, Mode=TwoWay}"/>
+                <CheckBox Content="{Binding DataContext.Localization[AutoRenewLabel], ElementName=RootControl, FallbackValue=Auto Renew}"
+                          IsChecked="{Binding Form.AutoRenew, Mode=TwoWay}"
+                          Margin="0,8,0,0"/>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,12,0,0">
+                  <Button Content="{Binding DataContext.Localization[ScheduleRenewalButton], ElementName=RootControl, FallbackValue=Schedule}"
+                          Width="90"
+                          Command="{Binding ScheduleRenewalCommand}"/>
+                  <Button Content="{Binding DataContext.Localization[MarkRenewedButton], ElementName=RootControl, FallbackValue=Mark Renewed}"
+                          Width="110"
+                          Margin="8,0,0,0"
+                          Command="{Binding MarkRenewedCommand}"/>
+                </StackPanel>
+              </StackPanel>
+            </Grid>
+
+            <GroupBox Header="{Binding DataContext.Localization[ApprovalsHeader], ElementName=RootControl, FallbackValue=Approvals}"
+                      Grid.Row="4"
+                      Margin="0,0,0,12">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="3*"/>
+                  <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ListView ItemsSource="{Binding Approvals}"
+                          SelectedItem="{Binding SelectedApproval, Mode=TwoWay}"
+                          Margin="0,4,12,0">
+                  <ListView.View>
+                    <GridView>
+                      <GridViewColumn Header="{Binding DataContext.Localization[ApproverHeader], ElementName=RootControl, FallbackValue=Approver}"
+                                      DisplayMemberBinding="{Binding Approver}"
+                                      Width="140"/>
+                      <GridViewColumn Header="{Binding DataContext.Localization[DecisionHeader], ElementName=RootControl, FallbackValue=Decision}"
+                                      DisplayMemberBinding="{Binding Decision}"
+                                      Width="120"/>
+                      <GridViewColumn Header="{Binding DataContext.Localization[RequestedHeader], ElementName=RootControl, FallbackValue=Requested}"
+                                      DisplayMemberBinding="{Binding RequestedOnDisplay}"
+                                      Width="140"/>
+                      <GridViewColumn Header="{Binding DataContext.Localization[DecidedHeader], ElementName=RootControl, FallbackValue=Decided}"
+                                      DisplayMemberBinding="{Binding DecidedOnDisplay}"
+                                      Width="140"/>
+                    </GridView>
+                  </ListView.View>
+                </ListView>
+                <StackPanel Grid.Column="1"
+                            Width="220"
+                            Margin="0,4,0,0">
+                  <TextBlock Text="{Binding DataContext.Localization[ApproverLabel], ElementName=RootControl, FallbackValue=Approver}"/>
+                  <TextBox Text="{Binding ApprovalApprover, UpdateSourceTrigger=PropertyChanged}"/>
+                  <Button Content="{Binding DataContext.Localization[RequestApprovalButton], ElementName=RootControl, FallbackValue=Request Approval}"
+                          Command="{Binding RequestApprovalCommand}"
+                          Margin="0,8,0,0"/>
+                  <TextBlock Text="{Binding DataContext.Localization[ReviewerCommentsLabel], ElementName=RootControl, FallbackValue=Reviewer Comments}"
+                             Margin="0,12,0,0"/>
+                  <TextBox Text="{Binding ApprovalComments, UpdateSourceTrigger=PropertyChanged}"
+                           AcceptsReturn="True"
+                           Height="80"/>
+                  <StackPanel Orientation="Horizontal"
+                              Margin="0,8,0,0">
+                    <Button Content="{Binding DataContext.Localization[ApproveButton], ElementName=RootControl, FallbackValue=Approve}"
+                            Width="90"
+                            Command="{Binding ApproveApprovalCommand}"/>
+                    <Button Content="{Binding DataContext.Localization[RejectButton], ElementName=RootControl, FallbackValue=Reject}"
+                            Width="90"
+                            Margin="8,0,0,0"
+                            Command="{Binding RejectApprovalCommand}"/>
+                  </StackPanel>
+                </StackPanel>
+              </Grid>
+            </GroupBox>
+
+            <GroupBox Header="{Binding ImpactedParties.Count, StringFormat=Impacted Parties ({0})}"
+                      Grid.Row="5"
+                      Margin="0,0,0,12">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="0"
+                            Margin="0,0,0,8">
+                  <Button Content="{Binding DataContext.Localization[AddImpactButton], ElementName=RootControl, FallbackValue=Add Impact}"
+                          Width="100"
+                          Command="{Binding AddImpactedPartyCommand}"/>
+                  <Button Content="{Binding DataContext.Localization[RemoveButton], ElementName=RootControl, FallbackValue=Remove}"
+                          Width="80"
+                          Margin="8,0,0,0"
+                          Command="{Binding RemoveImpactedPartyCommand}"/>
+                </StackPanel>
+
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding ImpactedParties}"
+                          SelectedItem="{Binding SelectedImpactedParty, Mode=TwoWay}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          HeadersVisibility="Column"
+                          BorderBrush="#FFDDDDDD"
+                          BorderThickness="1">
+                  <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="{Binding DataContext.Localization[ImpactedPartyColumn], ElementName=RootControl}"
+                                            Width="250">
+                      <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                          <ComboBox ItemsSource="{Binding DataContext.PartyLookupResults, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    SelectedItem="{Binding SelectedLookup, Mode=TwoWay}"
+                                    SelectedValuePath="PartyId"
+                                    IsEditable="True"
+                                    IsTextSearchEnabled="False"
+                                    TextSearch.TextPath="DisplayLabel"
+                                    Text="{Binding PartyName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    StaysOpenOnEdit="True"
+                                    Style="{StaticResource LookupComboBoxStyle}"/>
+                        </DataTemplate>
+                      </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="{Binding DataContext.Localization[ImpactedPartyTypeColumn], ElementName=RootControl}"
+                                        Binding="{Binding PartyType}"
+                                        Width="120"/>
+                    <DataGridTextColumn Header="{Binding DataContext.Localization[ImpactedPartyRelationshipColumn], ElementName=RootControl}"
+                                        Binding="{Binding Relationship, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="160"/>
+                  </DataGrid.Columns>
+                </DataGrid>
+              </Grid>
+            </GroupBox>
+
+            <GroupBox Header="{Binding Dashboard.TotalRates, StringFormat=Rates ({0} configured)}"
+                      Grid.Row="6"
+                      Margin="0,0,0,12">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="0"
+                            Margin="0,0,0,8">
+                  <Button Content="{Binding DataContext.Localization[AddRateButton], ElementName=RootControl, FallbackValue=Add Rate}"
+                          Width="90"
+                          Command="{Binding AddRateCommand}"/>
+                  <Button Content="{Binding DataContext.Localization[RemoveButton], ElementName=RootControl, FallbackValue=Remove}"
+                          Width="80"
+                          Margin="8,0,0,0"
+                          Command="{Binding RemoveRateCommand}"/>
+                </StackPanel>
+
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Rates}"
+                          SelectedItem="{Binding SelectedRate, Mode=TwoWay}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          HeadersVisibility="Column"
+                          BorderBrush="#FFDDDDDD"
+                          BorderThickness="1">
+                  <DataGrid.Columns>
+                    <DataGridTextColumn Header="Service Code"
+                                        Binding="{Binding ServiceCode, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="140"/>
+                    <DataGridTextColumn Header="Base Amount"
+                                        Binding="{Binding BaseAmount, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="120"/>
+                    <DataGridTextColumn Header="Discount %"
+                                        Binding="{Binding DiscountPercent, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="120"/>
+                    <DataGridTextColumn Header="Co-pay %"
+                                        Binding="{Binding CopayPercent, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="120"/>
+                  </DataGrid.Columns>
+                </DataGrid>
+              </Grid>
+            </GroupBox>
+
+            <GroupBox Header="{Binding DataContext.Localization[PricingHeader], ElementName=RootControl, FallbackValue=Pricing}"
+                      Grid.Row="7"
+                      Margin="0,0,0,12">
+              <Grid>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="0,0,12,8">
+                  <TextBlock Text="{Binding DataContext.Localization[ServiceCodeLabel], ElementName=RootControl, FallbackValue=Service Code}"/>
+                  <TextBox Text="{Binding Pricing.ServiceCode, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,0,8">
+                  <TextBlock Text="{Binding DataContext.Localization[QuantityLabel], ElementName=RootControl, FallbackValue=Quantity}"/>
+                  <TextBox Text="{Binding Pricing.Quantity, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="0,0,12,8">
+                  <TextBlock Text="{Binding DataContext.Localization[ListPriceLabel], ElementName=RootControl, FallbackValue=List Price}"/>
+                  <TextBox Text="{Binding Pricing.ListPrice, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <Button Grid.Row="1"
+                        Grid.Column="1"
+                        Content="{Binding DataContext.Localization[CalculateButton], ElementName=RootControl, FallbackValue=Calculate}"
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Command="{Binding CalculateCommand}"/>
+
+                <StackPanel Grid.Row="2"
+                            Grid.ColumnSpan="2"
+                            Orientation="Horizontal"
+                            Margin="0,8,0,0">
+                  <StackPanel Margin="0,0,16,0">
+                    <TextBlock Text="{Binding DataContext.Localization[NetLabel], ElementName=RootControl, FallbackValue=Net}"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Pricing.Result.NetAmount}"/>
+                  </StackPanel>
+                  <StackPanel Margin="0,0,16,0">
+                    <TextBlock Text="{Binding DataContext.Localization[DiscountLabel], ElementName=RootControl, FallbackValue=Discount}"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Pricing.Result.DiscountAmount}"/>
+                  </StackPanel>
+                  <StackPanel>
+                    <TextBlock Text="{Binding DataContext.Localization[CopayLabel], ElementName=RootControl, FallbackValue=Co-pay}"
+                               FontWeight="SemiBold"/>
+                    <TextBlock Text="{Binding Pricing.Result.CopayAmount}"/>
+                  </StackPanel>
+                </StackPanel>
+
+                <TextBlock Grid.Row="3"
+                           Grid.ColumnSpan="2"
+                           Text="{Binding Dashboard.AverageCopayPercent, StringFormat=Avg copay across catalog {0:N1}%}"
+                           Foreground="Gray"
+                           Margin="0,8,0,0"/>
+              </Grid>
+            </GroupBox>
+
+            <GroupBox Header="{Binding DataContext.Localization[PricingHistoryHeader], ElementName=RootControl, FallbackValue=Pricing History}"
+                      Grid.Row="8">
+              <ListView ItemsSource="{Binding PricingHistory}"
+                        Margin="0,4,0,0">
+                <ListView.View>
+                  <GridView>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryWhen], ElementName=RootControl, FallbackValue=When}"
+                                    DisplayMemberBinding="{Binding TimestampDisplay}"
+                                    Width="120"/>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryService], ElementName=RootControl, FallbackValue=Service}"
+                                    DisplayMemberBinding="{Binding ServiceCode}"
+                                    Width="120"/>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryQty], ElementName=RootControl, FallbackValue=Qty}"
+                                    DisplayMemberBinding="{Binding Quantity}"
+                                    Width="60"/>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryList], ElementName=RootControl, FallbackValue=List}"
+                                    DisplayMemberBinding="{Binding ListPriceDisplay}"
+                                    Width="100"/>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryNet], ElementName=RootControl, FallbackValue=Net}"
+                                    DisplayMemberBinding="{Binding NetDisplay}"
+                                    Width="110"/>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryDiscount], ElementName=RootControl, FallbackValue=Discount}"
+                                    DisplayMemberBinding="{Binding DiscountDisplay}"
+                                    Width="110"/>
+                    <GridViewColumn Header="{Binding DataContext.Localization[PricingHistoryCopay], ElementName=RootControl, FallbackValue=Co-pay}"
+                                    DisplayMemberBinding="{Binding CopayDisplay}"
+                                    Width="110"/>
+                  </GridView>
+                </ListView.View>
+              </ListView>
+            </GroupBox>
+          </Grid>
+        </Border>
+      </Grid>
+    </Grid>
+  </ScrollViewer>
+</UserControl>

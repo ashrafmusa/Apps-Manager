@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>ExcellCore.Module.Core.Financials</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcellCore.Domain\ExcellCore.Domain.csproj" />
+    <ProjectReference Include="..\ExcellCore.Module.Abstractions\ExcellCore.Module.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

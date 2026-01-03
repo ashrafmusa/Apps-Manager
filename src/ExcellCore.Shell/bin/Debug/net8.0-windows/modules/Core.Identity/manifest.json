@@ -1,0 +1,6 @@
+{
+  "ModuleId": "Core.Identity",
+  "DisplayName": "Master Identity Registry",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.Core.Identity.dll",
+  "Enabled": true
+}

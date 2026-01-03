@@ -1,0 +1,6 @@
+{
+  "ModuleId": "IS.Retail",
+  "DisplayName": "Retail Suite",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.IS.Retail.dll",
+  "Enabled": true
+}

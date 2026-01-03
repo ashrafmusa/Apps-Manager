@@ -1,0 +1,6 @@
+{
+  "ModuleId": "IS.Corporate",
+  "DisplayName": "Corporate Operations",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.IS.Corporate.dll",
+  "Enabled": true
+}

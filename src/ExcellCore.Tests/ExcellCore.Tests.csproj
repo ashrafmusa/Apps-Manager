@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>ExcellCore.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.5.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcellCore.Shell\ExcellCore.Shell.csproj" />
+    <ProjectReference Include="..\ExcellCore.Infrastructure\ExcellCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\ExcellCore.Domain\ExcellCore.Domain.csproj" />
+    <ProjectReference Include="..\ExcellCore.Module.Abstractions\ExcellCore.Module.Abstractions.csproj" />
+    <ProjectReference Include="..\ExcellCore.Module.Extensions.Sync\ExcellCore.Module.Extensions.Sync.csproj" />
+  </ItemGroup>
+</Project>

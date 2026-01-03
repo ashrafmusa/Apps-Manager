@@ -1,0 +1,631 @@
+<UserControl x:Class="ExcellCore.Module.IS.Clinical.Views.ClinicalWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Loaded="OnLoaded">
+  <UserControl.Resources>
+    <SolidColorBrush x:Key="JourneyAccentBrush"
+                     Color="#1D4ED8"/>
+    <SolidColorBrush x:Key="JourneySuccessBrush"
+                     Color="#15803D"/>
+    <SolidColorBrush x:Key="JourneyWarnBrush"
+                     Color="#B45309"/>
+    <SolidColorBrush x:Key="JourneyInfoBrush"
+                     Color="#0EA5E9"/>
+    <SolidColorBrush x:Key="JourneyMutedBrush"
+                     Color="#6B7280"/>
+
+    <Style x:Key="JourneyCardStyle"
+           TargetType="Border">
+      <Setter Property="Padding"
+              Value="12"/>
+      <Setter Property="Margin"
+              Value="0,0,12,12"/>
+      <Setter Property="Background"
+              Value="#F7F9FC"/>
+      <Setter Property="BorderBrush"
+              Value="#E1E7EF"/>
+      <Setter Property="BorderThickness"
+              Value="1"/>
+      <Setter Property="CornerRadius"
+              Value="6"/>
+    </Style>
+
+    <Style x:Key="JourneyBadgeStyle"
+           TargetType="Border">
+      <Setter Property="Padding"
+              Value="6,2"/>
+      <Setter Property="Margin"
+              Value="0,0,8,0"/>
+      <Setter Property="CornerRadius"
+              Value="4"/>
+      <Setter Property="BorderThickness"
+              Value="1"/>
+      <Setter Property="BorderBrush"
+              Value="#D7DEEA"/>
+      <Setter Property="Background"
+              Value="#E8EEFA"/>
+      <Setter Property="VerticalAlignment"
+              Value="Center"/>
+    </Style>
+
+    <Style x:Key="WorklistCardStyle"
+           TargetType="Border"
+           BasedOn="{StaticResource JourneyCardStyle}">
+      <Setter Property="Margin"
+              Value="0,6,0,0"/>
+      <Setter Property="Background"
+              Value="#FFFFFF"/>
+    </Style>
+
+    <Style x:Key="SignalCardStyle"
+           TargetType="Border"
+           BasedOn="{StaticResource JourneyCardStyle}">
+      <Setter Property="Margin"
+              Value="0,6,0,0"/>
+    </Style>
+  </UserControl.Resources>
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="{Binding Title}"
+                 FontSize="20"
+                 FontWeight="SemiBold"/>
+      <TextBlock Text="{Binding Subtitle}"
+                 Margin="12,0,0,0"
+                 Foreground="Gray"
+                 VerticalAlignment="Bottom"/>
+    </StackPanel>
+
+    <UniformGrid Grid.Row="1"
+                 Columns="3"
+                 Margin="0,16,0,16"
+                 HorizontalAlignment="Stretch">
+      <Border Style="{StaticResource ModuleSummaryCardNeutralStyle}">
+        <StackPanel>
+          <TextBlock Text="Active Orders"
+                     Style="{StaticResource ModuleSummaryLabelStyle}"/>
+          <TextBlock Text="{Binding Summary.ActiveOrders}"
+                     Style="{StaticResource ModuleSummaryValueStyle}"/>
+        </StackPanel>
+      </Border>
+      <Border Style="{StaticResource ModuleSummaryCardWarningStyle}">
+        <StackPanel>
+          <TextBlock Text="Pending Administrations"
+                     Style="{StaticResource ModuleSummaryLabelStyle}"
+                     Foreground="{StaticResource SummaryCardWarningLabelBrush}"/>
+          <TextBlock Text="{Binding Summary.PendingAdministrations}"
+                     Style="{StaticResource ModuleSummaryValueStyle}"/>
+        </StackPanel>
+      </Border>
+      <Border Style="{StaticResource ModuleSummaryCardSuccessStyle}"
+              Margin="0">
+        <StackPanel>
+          <TextBlock Text="Dispenses Today"
+                     Style="{StaticResource ModuleSummaryLabelStyle}"/>
+          <TextBlock Text="{Binding Summary.DispensesToday}"
+                     Style="{StaticResource ModuleSummaryValueStyle}"/>
+        </StackPanel>
+      </Border>
+    </UniformGrid>
+
+    <Grid Grid.Row="2"
+          Margin="0,0,0,16">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="240"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+      <StackPanel>
+        <TextBlock Text="Status"
+                   FontWeight="SemiBold"/>
+        <ComboBox ItemsSource="{Binding StatusFilters}"
+                  SelectedItem="{Binding SelectedStatus, Mode=TwoWay}"
+                  Margin="0,6,12,0"/>
+      </StackPanel>
+
+      <StackPanel Grid.Column="1">
+        <TextBlock Text="Search"
+                   FontWeight="SemiBold"/>
+        <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="0,6,12,0"/>
+      </StackPanel>
+
+      <Button Grid.Column="2"
+              Content="Clear Filters"
+              Width="110"
+              Height="32"
+              Margin="0,24,12,0"
+              Command="{Binding ClearFiltersCommand}"/>
+
+      <Button Grid.Column="3"
+              Content="Refresh"
+              Width="96"
+              Height="32"
+              Margin="0,24,0,0"
+              Command="{Binding RefreshCommand}"/>
+    </Grid>
+
+    <StackPanel Grid.Row="3"
+                Orientation="Horizontal"
+                Margin="0,0,0,12"
+                HorizontalAlignment="Left">
+      <Button Content="New Order"
+              Width="110"
+              Margin="0,0,8,0"
+              Command="{Binding NewOrderCommand}"/>
+      <Button Content="Record Dispense"
+              Width="140"
+              Margin="0,0,8,0"
+              Command="{Binding RecordDispenseCommand}"/>
+      <Button Content="Complete Next Dose"
+              Width="160"
+              Command="{Binding CompleteNextDoseCommand}"/>
+    </StackPanel>
+
+    <Grid Grid.Row="4">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <TextBlock Text="{Binding StatusMessage}"
+                 Foreground="Gray"/>
+
+      <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="2*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Column="0"
+                  ItemsSource="{Binding Orders}"
+                  SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  BorderBrush="#FFDDDDDD"
+                  BorderThickness="1"
+                  Margin="0,8,16,0">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Order"
+                                Binding="{Binding OrderNumber}"
+                                Width="120"/>
+            <DataGridTextColumn Header="Patient"
+                                Binding="{Binding Patient}"
+                                Width="160"/>
+            <DataGridTextColumn Header="Medication"
+                                Binding="{Binding Medication}"
+                                Width="170"/>
+            <DataGridTextColumn Header="Dose"
+                                Binding="{Binding Dose}"
+                                Width="100"/>
+            <DataGridTextColumn Header="Route"
+                                Binding="{Binding Route}"
+                                Width="80"/>
+            <DataGridTextColumn Header="Freq"
+                                Binding="{Binding Frequency}"
+                                Width="100"/>
+            <DataGridTextColumn Header="Status"
+                                Binding="{Binding Status}"
+                                Width="120"/>
+            <DataGridTextColumn Header="Ordered"
+                                Binding="{Binding OrderedDisplay}"
+                                Width="150"/>
+            <DataGridTextColumn Header="Start"
+                                Binding="{Binding StartDisplay}"
+                                Width="150"/>
+            <DataGridTextColumn Header="Provider"
+                                Binding="{Binding OrderingProvider}"
+                                Width="160"/>
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <Border Grid.Column="1"
+                BorderBrush="#FFDDDDDD"
+                BorderThickness="1"
+                Padding="12"
+                Margin="0,8,0,0"
+                Background="#FFFDFDFD">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Upcoming Administrations"
+                       FontWeight="SemiBold"
+                       FontSize="14"/>
+
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto">
+              <ItemsControl ItemsSource="{Binding Administrations}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <StackPanel/>
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <Border Margin="0,8,0,0"
+                            Padding="12"
+                            BorderThickness="1">
+                      <Border.Style>
+                        <Style TargetType="Border">
+                          <Setter Property="Background"
+                                  Value="#FFF9F9F9"/>
+                          <Setter Property="BorderBrush"
+                                  Value="#FFE0E0E0"/>
+                          <Style.Triggers>
+                            <DataTrigger Binding="{Binding Status}"
+                                         Value="Delayed">
+                              <Setter Property="Background"
+                                      Value="#FFFFF4F1"/>
+                              <Setter Property="BorderBrush"
+                                      Value="#FFF0B8A0"/>
+                            </DataTrigger>
+                          </Style.Triggers>
+                        </Style>
+                      </Border.Style>
+                      <StackPanel>
+                        <TextBlock Text="{Binding Medication}"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding OrderNumber}"
+                                   Foreground="Gray"
+                                   FontSize="12"/>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,6,0,0">
+                          <TextBlock Text="Scheduled"
+                                     FontWeight="SemiBold"/>
+                          <TextBlock Text="{Binding ScheduledDisplay}"
+                                     Margin="6,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,4,0,0">
+                          <TextBlock Text="Status"
+                                     FontWeight="SemiBold"/>
+                          <TextBlock Text="{Binding Status}"
+                                     Margin="6,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding PerformedBy}"
+                                   Margin="0,4,0,0"
+                                   Foreground="Gray"/>
+                        <TextBlock Text="{Binding AdministeredDisplay}"
+                                   Margin="0,2,0,0"
+                                   Foreground="#FF0B7A75"/>
+                      </StackPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </ScrollViewer>
+          </Grid>
+        </Border>
+      </Grid>
+
+      <Border Grid.Row="2"
+              Margin="0,16,0,0"
+              BorderBrush="#FFDDDDDD"
+              BorderThickness="1"
+              Padding="16"
+              Background="#FFFDFDFD">
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <StackPanel Orientation="Horizontal"
+                      VerticalAlignment="Center"
+                      Grid.ColumnSpan="2">
+            <TextBlock Text="Patient Journey"
+                       FontWeight="SemiBold"
+                       FontSize="14"/>
+            <Border Style="{StaticResource JourneyBadgeStyle}"
+                    Background="#E0F2FE"
+                    BorderBrush="#BAE6FD"
+                    Margin="12,0,0,0">
+              <TextBlock Text="{Binding CurrentPatient}"
+                         FontWeight="SemiBold"
+                         Foreground="#0F172A"/>
+            </Border>
+          </StackPanel>
+
+          <StackPanel Grid.Row="1"
+                      Grid.ColumnSpan="2"
+                      Margin="0,12,0,12">
+            <TextBlock Text="Timeline"
+                       FontWeight="SemiBold"
+                       Foreground="#1F2937"/>
+            <ScrollViewer Margin="0,6,0,0"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Disabled">
+              <ItemsControl ItemsSource="{Binding JourneyTimeline}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True"/>
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate>
+                    <Border Style="{StaticResource JourneyCardStyle}">
+                      <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                          <Border Style="{StaticResource JourneyBadgeStyle}">
+                            <TextBlock Text="{Binding TypeDisplay}"
+                                       FontWeight="SemiBold"
+                                       Foreground="#1F2937"/>
+                          </Border>
+                          <TextBlock Text="{Binding WhenDisplay}"
+                                     Foreground="{StaticResource JourneyMutedBrush}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding Title}"
+                                   FontWeight="SemiBold"
+                                   Margin="0,6,0,0"/>
+                        <TextBlock Text="{Binding Detail}"
+                                   Margin="0,2,0,0"
+                                   Foreground="#374151"/>
+                        <Border Margin="0,6,0,0"
+                                Visibility="Collapsed">
+                          <Border.Style>
+                            <Style TargetType="Border"
+                                   BasedOn="{StaticResource JourneyBadgeStyle}">
+                              <Setter Property="Visibility"
+                                      Value="Collapsed"/>
+                              <Style.Triggers>
+                                <DataTrigger Binding="{Binding SignalSeverity}"
+                                             Value="{x:Null}">
+                                  <Setter Property="Visibility"
+                                          Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding SignalSeverity}"
+                                             Value="">
+                                  <Setter Property="Visibility"
+                                          Value="Collapsed"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding SignalSeverity}"
+                                             Value="Warning">
+                                  <Setter Property="Background"
+                                          Value="#FEF3C7"/>
+                                  <Setter Property="BorderBrush"
+                                          Value="#FCD34D"/>
+                                  <Setter Property="Visibility"
+                                          Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding SignalSeverity}"
+                                             Value="Critical">
+                                  <Setter Property="Background"
+                                          Value="#FEE2E2"/>
+                                  <Setter Property="BorderBrush"
+                                          Value="#FCA5A5"/>
+                                  <Setter Property="Visibility"
+                                          Value="Visible"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding SignalSeverity}"
+                                             Value="Info">
+                                  <Setter Property="Background"
+                                          Value="#E0F2FE"/>
+                                  <Setter Property="BorderBrush"
+                                          Value="#BAE6FD"/>
+                                  <Setter Property="Visibility"
+                                          Value="Visible"/>
+                                </DataTrigger>
+                              </Style.Triggers>
+                            </Style>
+                          </Border.Style>
+                          <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding SignalSeverity}"
+                                       FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding SignalMessage}"
+                                       Margin="6,0,0,0"/>
+                          </StackPanel>
+                        </Border>
+                        <Border Margin="0,8,0,0">
+                          <Border.Style>
+                            <Style TargetType="Border"
+                                   BasedOn="{StaticResource JourneyBadgeStyle}">
+                              <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status}"
+                                             Value="Completed">
+                                  <Setter Property="Background"
+                                          Value="#DCFCE7"/>
+                                  <Setter Property="BorderBrush"
+                                          Value="#BBF7D0"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}"
+                                             Value="Delayed">
+                                  <Setter Property="Background"
+                                          Value="#FEF3C7"/>
+                                  <Setter Property="BorderBrush"
+                                          Value="#FCD34D"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}"
+                                             Value="Active">
+                                  <Setter Property="Background"
+                                          Value="#DBEAFE"/>
+                                  <Setter Property="BorderBrush"
+                                          Value="#BFDBFE"/>
+                                </DataTrigger>
+                              </Style.Triggers>
+                            </Style>
+                          </Border.Style>
+                          <TextBlock Text="{Binding Status}"
+                                     FontWeight="SemiBold"
+                                     Foreground="#111827"/>
+                        </Border>
+                      </StackPanel>
+                    </Border>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </ScrollViewer>
+          </StackPanel>
+
+          <Grid Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="1"
+                Margin="0,0,12,0">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Role Worklists"
+                       FontWeight="SemiBold"
+                       Foreground="#1F2937"/>
+            <Grid Grid.Row="1"
+                  Margin="0,6,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <StackPanel Grid.Column="0">
+                <TextBlock Text="Provider"
+                           FontWeight="SemiBold"/>
+                <ItemsControl ItemsSource="{Binding ProviderWorklist}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Border Style="{StaticResource WorklistCardStyle}">
+                        <StackPanel>
+                          <TextBlock Text="{Binding Title}"
+                                     FontWeight="SemiBold"/>
+                          <TextBlock Text="{Binding Status}"
+                                     Margin="0,2,0,0"
+                                     Foreground="{StaticResource JourneyAccentBrush}"/>
+                          <TextBlock Text="{Binding DueDisplay}"
+                                     Margin="0,2,0,0"
+                                     Foreground="{StaticResource JourneyMutedBrush}"/>
+                        </StackPanel>
+                      </Border>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
+              <StackPanel Grid.Column="1">
+                <TextBlock Text="Pharmacist"
+                           FontWeight="SemiBold"/>
+                <ItemsControl ItemsSource="{Binding PharmacistWorklist}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Border Style="{StaticResource WorklistCardStyle}">
+                        <StackPanel>
+                          <TextBlock Text="{Binding Title}"
+                                     FontWeight="SemiBold"/>
+                          <TextBlock Text="{Binding Status}"
+                                     Margin="0,2,0,0"
+                                     Foreground="{StaticResource JourneyAccentBrush}"/>
+                          <TextBlock Text="{Binding DueDisplay}"
+                                     Margin="0,2,0,0"
+                                     Foreground="{StaticResource JourneyMutedBrush}"/>
+                        </StackPanel>
+                      </Border>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
+              <StackPanel Grid.Column="2">
+                <TextBlock Text="Nurse"
+                           FontWeight="SemiBold"/>
+                <ItemsControl ItemsSource="{Binding NurseWorklist}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Border Style="{StaticResource WorklistCardStyle}">
+                        <StackPanel>
+                          <TextBlock Text="{Binding Title}"
+                                     FontWeight="SemiBold"/>
+                          <TextBlock Text="{Binding Status}"
+                                     Margin="0,2,0,0"
+                                     Foreground="{StaticResource JourneyAccentBrush}"/>
+                          <TextBlock Text="{Binding DueDisplay}"
+                                     Margin="0,2,0,0"
+                                     Foreground="{StaticResource JourneyMutedBrush}"/>
+                        </StackPanel>
+                      </Border>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </StackPanel>
+            </Grid>
+          </Grid>
+
+          <StackPanel Grid.Row="2"
+                      Grid.Column="1">
+            <TextBlock Text="Journey Inbox"
+                       FontWeight="SemiBold"
+                       Foreground="#1F2937"/>
+            <ItemsControl ItemsSource="{Binding InboxSignals}"
+                          Margin="0,6,0,0">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border>
+                    <Border.Style>
+                      <Style TargetType="Border"
+                             BasedOn="{StaticResource SignalCardStyle}">
+                        <Style.Triggers>
+                          <DataTrigger Binding="{Binding Severity}"
+                                       Value="Warning">
+                            <Setter Property="Background"
+                                    Value="#FEF3C7"/>
+                            <Setter Property="BorderBrush"
+                                    Value="#FCD34D"/>
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding Severity}"
+                                       Value="Critical">
+                            <Setter Property="Background"
+                                    Value="#FEE2E2"/>
+                            <Setter Property="BorderBrush"
+                                    Value="#FCA5A5"/>
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding Severity}"
+                                       Value="Info">
+                            <Setter Property="Background"
+                                    Value="#E0F2FE"/>
+                            <Setter Property="BorderBrush"
+                                    Value="#BAE6FD"/>
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Border.Style>
+                    <StackPanel>
+                      <StackPanel Orientation="Horizontal"
+                                  VerticalAlignment="Center">
+                        <Border Style="{StaticResource JourneyBadgeStyle}">
+                          <TextBlock Text="{Binding Severity}"
+                                     FontWeight="SemiBold"/>
+                        </Border>
+                        <TextBlock Text="{Binding WhenDisplay}"
+                                   Foreground="{StaticResource JourneyMutedBrush}"/>
+                      </StackPanel>
+                      <TextBlock Text="{Binding Message}"
+                                 Margin="0,6,0,0"
+                                 TextWrapping="Wrap"/>
+                    </StackPanel>
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </Grid>
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>

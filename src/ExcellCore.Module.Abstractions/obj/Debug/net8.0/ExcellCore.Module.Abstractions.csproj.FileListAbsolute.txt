@@ -1,0 +1,15 @@
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\bin\Debug\net8.0\ExcellCore.Module.Abstractions.deps.json
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\bin\Debug\net8.0\ExcellCore.Module.Abstractions.dll
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\bin\Debug\net8.0\ExcellCore.Module.Abstractions.pdb
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\bin\Debug\net8.0\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\bin\Debug\net8.0\ExcellCore.Domain.pdb
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.csproj.AssemblyReference.cache
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.AssemblyInfoInputs.cache
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.AssemblyInfo.cs
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.csproj.CoreCompileInputs.cache
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCo.B2B569E4.Up2Date
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.dll
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\refint\ExcellCore.Module.Abstractions.dll
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.pdb
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ref\ExcellCore.Module.Abstractions.dll

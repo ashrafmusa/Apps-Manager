@@ -1,0 +1,102 @@
+<UserControl x:Class="ExcellCore.Module.Extensions.Reporting.Views.ReportingWorkspaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Loaded="OnLoaded">
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Horizontal">
+      <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Subtitle}" Margin="12,0,0,0" Foreground="Gray" VerticalAlignment="Bottom" />
+    </StackPanel>
+
+    <UniformGrid Grid.Row="1" Columns="3" Margin="0,16,0,16">
+      <Border Style="{StaticResource ModuleSummaryCardNeutralStyle}">
+        <StackPanel>
+          <TextBlock Text="Active Dashboards" Style="{StaticResource ModuleSummaryLabelStyle}" />
+          <TextBlock Text="{Binding Summary.ActiveDashboards}" Style="{StaticResource ModuleSummaryValueStyle}" />
+        </StackPanel>
+      </Border>
+      <Border Style="{StaticResource ModuleSummaryCardSuccessStyle}">
+        <StackPanel>
+          <TextBlock Text="Scheduled Exports" Style="{StaticResource ModuleSummaryLabelSuccessStyle}" />
+          <TextBlock Text="{Binding Summary.ScheduledExports}" Style="{StaticResource ModuleSummaryValueStyle}" />
+        </StackPanel>
+      </Border>
+      <Border Style="{StaticResource ModuleSummaryCardWarningStyle}" Margin="0">
+        <StackPanel>
+          <TextBlock Text="Next 6 Hours" Style="{StaticResource ModuleSummaryLabelWarningStyle}" />
+          <TextBlock Text="{Binding Summary.ImminentRuns}" Style="{StaticResource ModuleSummaryValueStyle}" />
+        </StackPanel>
+      </Border>
+    </UniformGrid>
+
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="3*" />
+        <ColumnDefinition Width="0.5*" />
+        <ColumnDefinition Width="2*" />
+      </Grid.ColumnDefinitions>
+
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Dashboards" FontWeight="SemiBold" FontSize="14" />
+
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Dashboards}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  BorderBrush="#FFDDDDDD"
+                  BorderThickness="1"
+                  Margin="0,8,0,8">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="180" />
+            <DataGridTextColumn Header="Domain" Binding="{Binding Domain}" Width="140" />
+            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="2" Text="{Binding StatusMessage}" Foreground="Gray" />
+      </Grid>
+
+      <Border Grid.Column="2" BorderBrush="#FFDDDDDD" BorderThickness="1" Padding="16">
+        <StackPanel>
+          <TextBlock Text="Scheduled Exports" FontWeight="SemiBold" FontSize="14" />
+          <ItemsControl ItemsSource="{Binding ExportSchedules}" Margin="0,8,0,0">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Margin="0,4,0,4" Padding="12" BorderBrush="#FFE0E0E0" BorderThickness="1" Background="#FFF9F9F9">
+                  <StackPanel>
+                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                      <TextBlock Text="Format" FontWeight="SemiBold" />
+                      <TextBlock Text="{Binding Format}" Margin="6,0,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                      <TextBlock Text="Cadence" FontWeight="SemiBold" />
+                      <TextBlock Text="{Binding CadenceDisplay}" Margin="6,0,0,0" />
+                    </StackPanel>
+                    <TextBlock Text="{Binding NextRunDisplay, StringFormat=Next run {0}}" Foreground="#FF0B7A75" Margin="0,4,0,0" />
+                  </StackPanel>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>

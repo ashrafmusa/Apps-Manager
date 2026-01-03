@@ -1,0 +1,1139 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Apps Manager\\src\\ExcellCore.Tests\\ExcellCore.Tests.csproj": {}
+  },
+  "projects": {
+    "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj",
+        "projectName": "ExcellCore.Domain",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj",
+        "projectName": "ExcellCore.Infrastructure",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj",
+        "projectName": "ExcellCore.Module.Abstractions",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Agreements\\ExcellCore.Module.Core.Agreements.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Agreements\\ExcellCore.Module.Core.Agreements.csproj",
+        "projectName": "ExcellCore.Module.Core.Agreements",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Agreements\\ExcellCore.Module.Core.Agreements.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Agreements\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Financials\\ExcellCore.Module.Core.Financials.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Financials\\ExcellCore.Module.Core.Financials.csproj",
+        "projectName": "ExcellCore.Module.Core.Financials",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Financials\\ExcellCore.Module.Core.Financials.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Financials\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Identity\\ExcellCore.Module.Core.Identity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Identity\\ExcellCore.Module.Core.Identity.csproj",
+        "projectName": "ExcellCore.Module.Core.Identity",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Identity\\ExcellCore.Module.Core.Identity.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Identity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Inventory\\ExcellCore.Module.Core.Inventory.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Inventory\\ExcellCore.Module.Core.Inventory.csproj",
+        "projectName": "ExcellCore.Module.Core.Inventory",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Inventory\\ExcellCore.Module.Core.Inventory.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Inventory\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Reporting\\ExcellCore.Module.Extensions.Reporting.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Reporting\\ExcellCore.Module.Extensions.Reporting.csproj",
+        "projectName": "ExcellCore.Module.Extensions.Reporting",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Reporting\\ExcellCore.Module.Extensions.Reporting.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Reporting\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj",
+        "projectName": "ExcellCore.Module.Extensions.Sync",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Clinical\\ExcellCore.Module.IS.Clinical.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Clinical\\ExcellCore.Module.IS.Clinical.csproj",
+        "projectName": "ExcellCore.Module.IS.Clinical",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Clinical\\ExcellCore.Module.IS.Clinical.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Clinical\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Corporate\\ExcellCore.Module.IS.Corporate.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Corporate\\ExcellCore.Module.IS.Corporate.csproj",
+        "projectName": "ExcellCore.Module.IS.Corporate",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Corporate\\ExcellCore.Module.IS.Corporate.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Corporate\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Retail\\ExcellCore.Module.IS.Retail.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Retail\\ExcellCore.Module.IS.Retail.csproj",
+        "projectName": "ExcellCore.Module.IS.Retail",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Retail\\ExcellCore.Module.IS.Retail.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Retail\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Shell\\ExcellCore.Shell.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Shell\\ExcellCore.Shell.csproj",
+        "projectName": "ExcellCore.Shell",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Shell\\ExcellCore.Shell.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Shell\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Agreements\\ExcellCore.Module.Core.Agreements.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Agreements\\ExcellCore.Module.Core.Agreements.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Financials\\ExcellCore.Module.Core.Financials.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Financials\\ExcellCore.Module.Core.Financials.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Identity\\ExcellCore.Module.Core.Identity.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Identity\\ExcellCore.Module.Core.Identity.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Inventory\\ExcellCore.Module.Core.Inventory.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Core.Inventory\\ExcellCore.Module.Core.Inventory.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Reporting\\ExcellCore.Module.Extensions.Reporting.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Reporting\\ExcellCore.Module.Extensions.Reporting.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Clinical\\ExcellCore.Module.IS.Clinical.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Clinical\\ExcellCore.Module.IS.Clinical.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Corporate\\ExcellCore.Module.IS.Corporate.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Corporate\\ExcellCore.Module.IS.Corporate.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Retail\\ExcellCore.Module.IS.Retail.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.IS.Retail\\ExcellCore.Module.IS.Retail.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Apps Manager\\src\\ExcellCore.Tests\\ExcellCore.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Apps Manager\\src\\ExcellCore.Tests\\ExcellCore.Tests.csproj",
+        "projectName": "ExcellCore.Tests",
+        "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Tests\\ExcellCore.Tests.csproj",
+        "packagesPath": "C:\\Users\\SAMEH\\.nuget\\packages\\",
+        "outputPath": "D:\\Apps Manager\\src\\ExcellCore.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\SAMEH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Domain\\ExcellCore.Domain.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Infrastructure\\ExcellCore.Infrastructure.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Abstractions\\ExcellCore.Module.Abstractions.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Module.Extensions.Sync\\ExcellCore.Module.Extensions.Sync.csproj"
+              },
+              "D:\\Apps Manager\\src\\ExcellCore.Shell\\ExcellCore.Shell.csproj": {
+                "projectPath": "D:\\Apps Manager\\src\\ExcellCore.Shell\\ExcellCore.Shell.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

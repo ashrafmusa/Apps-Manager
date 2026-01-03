@@ -1,0 +1,17 @@
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Infrastructure.deps.json
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Infrastructure.dll
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Infrastructure.pdb
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Module.Abstractions.dll
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Domain.pdb
+D:\Apps Manager\src\ExcellCore.Infrastructure\bin\Debug\net8.0\ExcellCore.Module.Abstractions.pdb
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.csproj.AssemblyReference.cache
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.AssemblyInfoInputs.cache
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.AssemblyInfo.cs
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCo.FB11BC59.Up2Date
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.dll
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\refint\ExcellCore.Infrastructure.dll
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.pdb
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ref\ExcellCore.Infrastructure.dll

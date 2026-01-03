@@ -1,0 +1,6 @@
+{
+  "ModuleId": "IS.Clinical",
+  "DisplayName": "Clinical Workflows",
+  "AssemblyPath": "..\\..\\ExcellCore.Module.IS.Clinical.dll",
+  "Enabled": true
+}
