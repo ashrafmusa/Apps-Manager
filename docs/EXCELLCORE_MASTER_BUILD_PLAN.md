@@ -115,6 +115,30 @@ When you fix any issue document the remediation sequence and capture it here so 
 - [ ] Sprint 7 – Interoperability (Owner: Integration): FHIR/HL7v2 gateways for ADT/ORM/ORU/SIU, MPI alignment, CCD/CCDA stub export. AC: ADT in/out processed; identity reconciled; CCD generated per encounter.
 - [ ] Sprint 8 – Security/Compliance/SRE (Owner: Platform): authn/z (SSO/MFA/roles), privacy controls, retention/backup/DR, monitoring/SLOs, deployment packaging. AC: role-based access enforced; backups/restores validated; health endpoints monitored.
 
+#### Sprint 1 Detail – ADT Foundation
+- Deliverables: Ward/Room/Bed entities + migration; ADT service (Admit/Transfer/Discharge) with audit; bed board VM; occupancy/isolation telemetry.
+- Tests: ADT commands persist audit; bed board reflects occupancy; telemetry snapshot includes occupancy metric with expected counts.
+
+#### Sprint 2 Detail – Orders & Results
+- Deliverables: LIS/RIS routing interfaces and JSON/HL7 stub adapter; order set definitions; result ingestion with ACK/ERR logging.
+- Tests: order placement serializes envelope; ORU ingest updates order status and records acknowledgment; order set expands into discrete orders.
+
+#### Sprint 3 Detail – Clinical Documentation
+- Deliverables: note templates (H&P/progress/discharge/consent), versioning, signatures/attestations, PDF export bound to encounter.
+- Tests: create/attest increments version and audit; PDF export produced and linked to encounter.
+
+#### Sprint 4 Detail – MAR/Medication Safety
+- Deliverables: MAR shift views, overdue cues, barcode hook points, allergy/clinical rule checks, IV/titration support.
+- Tests: administration only after rule check passes; overdue queue populated; barcode hook callable in tests.
+
+#### Sprint 5 Detail – Scheduling & Hand-offs
+- Deliverables: procedure/consult scheduling board with resource availability, waitlist/overbook rules, hand-off summary template.
+- Tests: scheduling prevents resource collisions; hand-off summary includes recent vitals/orders snapshot.
+
+#### Sprint 6 Detail – Billing/Revenue
+- Deliverables: charge capture pipeline from administrations/procedures/docs, coding support stubs, claim export stub, reconciliation logging.
+- Tests: admin/procedure triggers charge entry; claim export generated; edits/audits recorded.
+
 ## Phase 1 Smoke Checklist (Published Build)
 - Launch from [publish/ExcellCore.Shell/win-x64](publish/ExcellCore.Shell/win-x64); confirm migrations apply and the shell health banner settles green.
 - Clinical journey: CPOE order → dispense → administer; verify the timeline updates, severity badges render, and reminders surface.
