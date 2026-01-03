@@ -19,3 +19,4 @@ D:\Apps Manager\src\ExcellCore.Module.IS.Retail\obj\Debug\net8.0-windows\ExcellC
 D:\Apps Manager\src\ExcellCore.Module.IS.Retail\obj\Debug\net8.0-windows\refint\ExcellCore.Module.IS.Retail.dll
 D:\Apps Manager\src\ExcellCore.Module.IS.Retail\obj\Debug\net8.0-windows\ExcellCore.Module.IS.Retail.pdb
 D:\Apps Manager\src\ExcellCore.Module.IS.Retail\obj\Debug\net8.0-windows\ref\ExcellCore.Module.IS.Retail.dll
+D:\Apps Manager\src\ExcellCore.Module.IS.Retail\obj\Debug\net8.0-windows\ExcellCore.Module.IS.Retail.sourcelink.json

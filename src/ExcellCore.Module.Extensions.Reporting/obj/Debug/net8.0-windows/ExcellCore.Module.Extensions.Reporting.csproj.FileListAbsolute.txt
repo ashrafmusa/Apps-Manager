@@ -25,3 +25,4 @@ D:\Apps Manager\src\ExcellCore.Module.Extensions.Reporting\obj\Debug\net8.0-wind
 D:\Apps Manager\src\ExcellCore.Module.Extensions.Reporting\obj\Debug\net8.0-windows\Views\TelemetryWorkspaceView.g.cs
 D:\Apps Manager\src\ExcellCore.Module.Extensions.Reporting\obj\Debug\net8.0-windows\Views\SlaWorkspaceView.baml
 D:\Apps Manager\src\ExcellCore.Module.Extensions.Reporting\obj\Debug\net8.0-windows\Views\SlaWorkspaceView.g.cs
+D:\Apps Manager\src\ExcellCore.Module.Extensions.Reporting\obj\Debug\net8.0-windows\ExcellCore.Module.Extensions.Reporting.sourcelink.json

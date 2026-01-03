@@ -19,3 +19,4 @@ D:\Apps Manager\src\ExcellCore.Module.IS.Clinical\obj\Debug\net8.0-windows\Excel
 D:\Apps Manager\src\ExcellCore.Module.IS.Clinical\obj\Debug\net8.0-windows\refint\ExcellCore.Module.IS.Clinical.dll
 D:\Apps Manager\src\ExcellCore.Module.IS.Clinical\obj\Debug\net8.0-windows\ExcellCore.Module.IS.Clinical.pdb
 D:\Apps Manager\src\ExcellCore.Module.IS.Clinical\obj\Debug\net8.0-windows\ref\ExcellCore.Module.IS.Clinical.dll
+D:\Apps Manager\src\ExcellCore.Module.IS.Clinical\obj\Debug\net8.0-windows\ExcellCore.Module.IS.Clinical.sourcelink.json

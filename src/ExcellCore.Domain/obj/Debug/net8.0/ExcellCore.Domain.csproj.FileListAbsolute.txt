@@ -12,3 +12,4 @@ D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\refint\ExcellCore.Domain.
 D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.pdb
 D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.genruntimeconfig.cache
 D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ref\ExcellCore.Domain.dll
+D:\Apps Manager\src\ExcellCore.Domain\obj\Debug\net8.0\ExcellCore.Domain.sourcelink.json

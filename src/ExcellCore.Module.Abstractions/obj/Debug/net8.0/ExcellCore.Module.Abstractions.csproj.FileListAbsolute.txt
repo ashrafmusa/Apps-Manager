@@ -13,3 +13,4 @@ D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.M
 D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\refint\ExcellCore.Module.Abstractions.dll
 D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.pdb
 D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ref\ExcellCore.Module.Abstractions.dll
+D:\Apps Manager\src\ExcellCore.Module.Abstractions\obj\Debug\net8.0\ExcellCore.Module.Abstractions.sourcelink.json

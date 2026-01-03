@@ -15,3 +15,4 @@ D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infras
 D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\refint\ExcellCore.Infrastructure.dll
 D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.pdb
 D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ref\ExcellCore.Infrastructure.dll
+D:\Apps Manager\src\ExcellCore.Infrastructure\obj\Debug\net8.0\ExcellCore.Infrastructure.sourcelink.json

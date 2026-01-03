@@ -19,3 +19,4 @@ D:\Apps Manager\src\ExcellCore.Module.Extensions.Sync\obj\Debug\net8.0-windows\E
 D:\Apps Manager\src\ExcellCore.Module.Extensions.Sync\obj\Debug\net8.0-windows\refint\ExcellCore.Module.Extensions.Sync.dll
 D:\Apps Manager\src\ExcellCore.Module.Extensions.Sync\obj\Debug\net8.0-windows\ExcellCore.Module.Extensions.Sync.pdb
 D:\Apps Manager\src\ExcellCore.Module.Extensions.Sync\obj\Debug\net8.0-windows\ref\ExcellCore.Module.Extensions.Sync.dll
+D:\Apps Manager\src\ExcellCore.Module.Extensions.Sync\obj\Debug\net8.0-windows\ExcellCore.Module.Extensions.Sync.sourcelink.json

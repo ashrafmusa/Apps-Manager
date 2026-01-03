@@ -193,3 +193,4 @@ D:\Apps Manager\src\ExcellCore.Tests\bin\Debug\net8.0-windows\ExcellCore.Module.
 D:\Apps Manager\src\ExcellCore.Tests\bin\Debug\net8.0-windows\ExcellCore.Module.IS.Clinical.pdb
 D:\Apps Manager\src\ExcellCore.Tests\bin\Debug\net8.0-windows\ExcellCore.Module.IS.Corporate.pdb
 D:\Apps Manager\src\ExcellCore.Tests\bin\Debug\net8.0-windows\ExcellCore.Module.IS.Retail.pdb
+D:\Apps Manager\src\ExcellCore.Tests\obj\Debug\net8.0-windows\ExcellCore.Tests.sourcelink.json

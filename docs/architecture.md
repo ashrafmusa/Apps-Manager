@@ -61,7 +61,8 @@ ExcellCore is a modular, identity-first ERP platform that ships as a Windows des
 - **Sync Transport:** JSON sync transport adapter packages outbound deltas into envelopes and applies inbound results; registered in DI with coverage via Sync transport tests.
 - **Identifiers:** Sequential GUID generator is registered and used across agreements, parties, retail, corporate, reporting, and telemetry services (including seeds and tests) to prepare for multi-site sync and reduce index fragmentation.
 - **Shared Styling:** Module summary cards, label tones, and typography centralized in `Styles/ModuleSummaryStyles.xaml` and applied across core and industry workspaces.
-- **Database Migrations:** Core data layer managed through EF Core migrations with runtime application via context factory; latest migration `20260102161935_202601021730_M7PredictiveTelemetryInventory` adds inventory ledger/alert tables for anomaly analytics.
+- **Database Migrations:** Core data layer managed through EF Core migrations with runtime application via context factory; latest migration `20260103170000_202601031715_M8AdtFoundation` adds wards/rooms/beds tables and indexes for ADT flows (previous: `20260102161935_202601021730_M7PredictiveTelemetryInventory`).
+- **ADT Foundation:** Wards/rooms/beds entities, ADT service (admit/transfer/discharge), initial bed-board seeding, and occupancy telemetry capture landed with Sprint 1.
 - **Operational Diagnostics:** Desktop runtime persists startup traces to `%LOCALAPPDATA%\ExcellCore\shell.log` and module loading traces to `%LOCALAPPDATA%\ExcellCore\module-loader.log`; keep these logs when debugging publish issues or health-banner regressions.
 - **Build Health:** `dotnet build src/ExcellCore.sln` and `dotnet test src/ExcellCore.sln` pass (37 tests including clinical/retail workflows and inventory analytics); modules load via manifests for manual testing.
 
@@ -114,11 +115,11 @@ src/
 ```
 
 ## 8. Next Steps
-1. Facility model: add wards/rooms/beds with ADT flows (admit/transfer/discharge), bed board, and bed-level status telemetry.
+1. Sprint 2 – Orders & Results: define LIS/RIS order routing interfaces and JSON/HL7 stub adapters; add result ingest with ACK/ERR logging; introduce order-set definitions and a migration to persist orders/results.
 2. Provider & nursing workflows: order sets, vitals/flowsheets, MAR batching with shift views, and overdue task cues in the journey timeline.
 3. Clinical documentation: configurable note templates (H&P, progress, discharge), signature/attestation, and PDF export tied to encounters.
 4. Scheduling & hand-offs: inpatient schedule board (procedures/consults), hand-off summaries, and escalation hooks into notifications.
-5. Integration & billing: LIS/RIS order routing stubs, charge capture from administrations/procedures, and audit-ready trails across ADT/orders/admins.
+5. Integration & billing: charge capture from administrations/procedures, LIS/RIS routing stubs, and audit-ready trails across ADT/orders/admins.
 
 ## 11. Phase 1 Smoke Checklist (Published Build)
 - Launch from [publish/ExcellCore.Shell/win-x64](publish/ExcellCore.Shell/win-x64); allow migrations to apply, confirm shell health banner shows green on first refresh.

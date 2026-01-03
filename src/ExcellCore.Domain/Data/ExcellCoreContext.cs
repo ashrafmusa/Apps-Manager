@@ -36,6 +36,12 @@ public sealed class ExcellCoreContext : DbContext
     public DbSet<PartyMetadata> PartyMetadata => Set<PartyMetadata>();
     public DbSet<InventoryLedgerEntry> InventoryLedgerEntries => Set<InventoryLedgerEntry>();
     public DbSet<InventoryAnomalyAlert> InventoryAnomalyAlerts => Set<InventoryAnomalyAlert>();
+    public DbSet<LabOrder> LabOrders => Set<LabOrder>();
+    public DbSet<OrderResult> OrderResults => Set<OrderResult>();
+    public DbSet<OrderSet> OrderSets => Set<OrderSet>();
+    public DbSet<Ward> Wards => Set<Ward>();
+    public DbSet<Room> Rooms => Set<Room>();
+    public DbSet<Bed> Beds => Set<Bed>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -517,6 +523,129 @@ public sealed class ExcellCoreContext : DbContext
             builder.Property(a => a.WindowEndUtc).IsRequired();
             builder.HasIndex(a => new { a.Sku, a.Location, a.DetectedOnUtc });
             builder.OwnsOne(a => a.Audit, audit =>
+            {
+                audit.Property(a => a.CreatedBy).HasMaxLength(64);
+                audit.Property(a => a.ModifiedBy).HasMaxLength(64);
+                audit.Property(a => a.SourceModule).HasMaxLength(128);
+            });
+        });
+
+        modelBuilder.Entity<Ward>(builder =>
+        {
+            builder.HasKey(w => w.WardId);
+            builder.Property(w => w.Name).HasMaxLength(128);
+            builder.Property(w => w.Code).HasMaxLength(32);
+            builder.HasMany(w => w.Rooms)
+                .WithOne(r => r.Ward)
+                .HasForeignKey(r => r.WardId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.OwnsOne(w => w.Audit, audit =>
+            {
+                audit.Property(a => a.CreatedBy).HasMaxLength(64);
+                audit.Property(a => a.ModifiedBy).HasMaxLength(64);
+                audit.Property(a => a.SourceModule).HasMaxLength(128);
+            });
+        });
+
+        modelBuilder.Entity<Room>(builder =>
+        {
+            builder.HasKey(r => r.RoomId);
+            builder.Property(r => r.RoomNumber).HasMaxLength(32);
+            builder.HasIndex(r => new { r.WardId, r.RoomNumber }).IsUnique();
+            builder.HasOne(r => r.Ward)
+                .WithMany(w => w.Rooms)
+                .HasForeignKey(r => r.WardId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(r => r.Beds)
+                .WithOne(b => b.Room)
+                .HasForeignKey(b => b.RoomId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.OwnsOne(r => r.Audit, audit =>
+            {
+                audit.Property(a => a.CreatedBy).HasMaxLength(64);
+                audit.Property(a => a.ModifiedBy).HasMaxLength(64);
+                audit.Property(a => a.SourceModule).HasMaxLength(128);
+            });
+        });
+
+        modelBuilder.Entity<Bed>(builder =>
+        {
+            builder.HasKey(b => b.BedId);
+            builder.Property(b => b.BedNumber).HasMaxLength(32);
+            builder.Property(b => b.Status).HasMaxLength(64);
+            builder.Property(b => b.IsIsolation).IsRequired();
+            builder.Property(b => b.OccupiedOnUtc);
+            builder.HasIndex(b => new { b.RoomId, b.BedNumber }).IsUnique();
+            builder.HasIndex(b => b.OccupiedByPartyId);
+            builder.HasOne(b => b.Room)
+                .WithMany(r => r.Beds)
+                .HasForeignKey(b => b.RoomId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne<Party>()
+                .WithMany()
+                .HasForeignKey(b => b.OccupiedByPartyId)
+                .OnDelete(DeleteBehavior.SetNull);
+            builder.OwnsOne(b => b.Audit, audit =>
+            {
+                audit.Property(a => a.CreatedBy).HasMaxLength(64);
+                audit.Property(a => a.ModifiedBy).HasMaxLength(64);
+                audit.Property(a => a.SourceModule).HasMaxLength(128);
+            });
+        });
+
+        modelBuilder.Entity<LabOrder>(builder =>
+        {
+            builder.HasKey(o => o.LabOrderId);
+            builder.Property(o => o.OrderNumber).HasMaxLength(64);
+            builder.Property(o => o.TestCode).HasMaxLength(128);
+            builder.Property(o => o.Status).HasMaxLength(32);
+            builder.Property(o => o.ExternalSystem).HasMaxLength(64);
+            builder.Property(o => o.ExternalOrderId).HasMaxLength(64);
+            builder.Property(o => o.OrderingProvider).HasMaxLength(256);
+            builder.Property(o => o.Notes).HasColumnType("TEXT");
+            builder.Property(o => o.OrderedOnUtc).IsRequired();
+            builder.HasIndex(o => o.OrderNumber).IsUnique();
+            builder.HasIndex(o => new { o.ExternalSystem, o.ExternalOrderId }).IsUnique();
+            builder.HasMany(o => o.Results)
+                .WithOne(r => r.LabOrder)
+                .HasForeignKey(r => r.LabOrderId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.OwnsOne(o => o.Audit, audit =>
+            {
+                audit.Property(a => a.CreatedBy).HasMaxLength(64);
+                audit.Property(a => a.ModifiedBy).HasMaxLength(64);
+                audit.Property(a => a.SourceModule).HasMaxLength(128);
+            });
+        });
+
+        modelBuilder.Entity<OrderResult>(builder =>
+        {
+            builder.HasKey(r => r.OrderResultId);
+            builder.Property(r => r.ResultCode).HasMaxLength(64);
+            builder.Property(r => r.ResultValue).HasMaxLength(256);
+            builder.Property(r => r.ResultStatus).HasMaxLength(32);
+            builder.Property(r => r.Units).HasMaxLength(32);
+            builder.Property(r => r.ReferenceRange).HasMaxLength(128);
+            builder.Property(r => r.PerformedBy).HasMaxLength(128);
+            builder.Property(r => r.CollectedOnUtc).IsRequired();
+            builder.HasIndex(r => new { r.LabOrderId, r.CollectedOnUtc });
+            builder.OwnsOne(r => r.Audit, audit =>
+            {
+                audit.Property(a => a.CreatedBy).HasMaxLength(64);
+                audit.Property(a => a.ModifiedBy).HasMaxLength(64);
+                audit.Property(a => a.SourceModule).HasMaxLength(128);
+            });
+        });
+
+        modelBuilder.Entity<OrderSet>(builder =>
+        {
+            builder.HasKey(o => o.OrderSetId);
+            builder.Property(o => o.Name).HasMaxLength(128);
+            builder.Property(o => o.Version).HasMaxLength(32);
+            builder.Property(o => o.Description).HasMaxLength(512);
+            builder.Property(o => o.ItemsJson).HasColumnType("TEXT");
+            builder.HasIndex(o => new { o.Name, o.Version }).IsUnique();
+            builder.OwnsOne(o => o.Audit, audit =>
             {
                 audit.Property(a => a.CreatedBy).HasMaxLength(64);
                 audit.Property(a => a.ModifiedBy).HasMaxLength(64);

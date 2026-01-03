@@ -19,3 +19,4 @@ D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0-windows\Exc
 D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0-windows\refint\ExcellCore.Module.Core.Identity.dll
 D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0-windows\ExcellCore.Module.Core.Identity.pdb
 D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0-windows\ref\ExcellCore.Module.Core.Identity.dll
+D:\Apps Manager\src\ExcellCore.Module.Core.Identity\obj\Debug\net8.0-windows\ExcellCore.Module.Core.Identity.sourcelink.json

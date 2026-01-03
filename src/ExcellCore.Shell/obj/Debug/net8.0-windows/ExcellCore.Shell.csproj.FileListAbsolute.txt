@@ -178,3 +178,4 @@ D:\Apps Manager\src\ExcellCore.Shell\obj\Debug\net8.0-windows\refint\ExcellCore.
 D:\Apps Manager\src\ExcellCore.Shell\obj\Debug\net8.0-windows\ExcellCore.Shell.pdb
 D:\Apps Manager\src\ExcellCore.Shell\obj\Debug\net8.0-windows\ExcellCore.Shell.genruntimeconfig.cache
 D:\Apps Manager\src\ExcellCore.Shell\obj\Debug\net8.0-windows\ref\ExcellCore.Shell.dll
+D:\Apps Manager\src\ExcellCore.Shell\obj\Debug\net8.0-windows\ExcellCore.Shell.sourcelink.json

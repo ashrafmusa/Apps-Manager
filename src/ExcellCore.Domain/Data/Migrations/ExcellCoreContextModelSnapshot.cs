@@ -55,6 +55,43 @@ namespace ExcellCore.Domain.Data.Migrations
                     b.ToTable("ActionLogs");
                 });
 
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Bed", b =>
+                {
+                    b.Property<Guid>("BedId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("BedNumber")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsIsolation")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<Guid?>("OccupiedByPartyId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("OccupiedOnUtc")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("RoomId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BedId");
+
+                    b.HasIndex("OccupiedByPartyId");
+
+                    b.HasIndex("RoomId", "BedNumber")
+                        .IsUnique();
+
+                    b.ToTable("Beds");
+                });
+
             modelBuilder.Entity("ExcellCore.Domain.Entities.Agreement", b =>
                 {
                     b.Property<Guid>("AgreementId")
@@ -764,6 +801,28 @@ namespace ExcellCore.Domain.Data.Migrations
                     b.ToTable("RetailTransactions");
                 });
 
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Room", b =>
+                {
+                    b.Property<Guid>("RoomId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoomNumber")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("WardId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("RoomId");
+
+                    b.HasIndex("WardId", "RoomNumber")
+                        .IsUnique();
+
+                    b.ToTable("Rooms");
+                });
+
             modelBuilder.Entity("ExcellCore.Domain.Entities.SyncChangeLedgerEntry", b =>
                 {
                     b.Property<Guid>("SyncChangeLedgerEntryId")
@@ -979,6 +1038,26 @@ namespace ExcellCore.Domain.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("TelemetryThresholds");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Ward", b =>
+                {
+                    b.Property<Guid>("WardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("WardId");
+
+                    b.ToTable("Wards");
                 });
 
             modelBuilder.Entity("ExcellCore.Domain.Entities.Ticket", b =>
@@ -1415,6 +1494,142 @@ namespace ExcellCore.Domain.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ExcellCore.Domain.Entities.LabOrder", b =>
+                {
+                    b.Property<Guid>("LabOrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ExternalOrderId")
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ExternalSystem")
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OrderNumber")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("OrderedOnUtc")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OrderingProvider")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("PartyId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TestCode")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LabOrderId");
+
+                    b.HasIndex("OrderNumber")
+                        .IsUnique();
+
+                    b.HasIndex("ExternalSystem", "ExternalOrderId")
+                        .IsUnique();
+
+                    b.ToTable("LabOrders");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.OrderResult", b =>
+                {
+                    b.Property<Guid>("OrderResultId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CollectedOnUtc")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("LabOrderId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PerformedBy")
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ReferenceRange")
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ResultCode")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ResultStatus")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ResultValue")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Units")
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("OrderResultId");
+
+                    b.HasIndex("LabOrderId", "CollectedOnUtc");
+
+                    b.HasOne("ExcellCore.Domain.Entities.LabOrder", "LabOrder")
+                        .WithMany("Results")
+                        .HasForeignKey("LabOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.ToTable("OrderResults");
+
+                    b.Navigation("LabOrder");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.OrderSet", b =>
+                {
+                    b.Property<Guid>("OrderSetId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(512)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ItemsJson")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("OrderSetId");
+
+                    b.HasIndex("Name", "Version")
+                        .IsUnique();
+
+                    b.ToTable("OrderSets");
+                });
+
             modelBuilder.Entity("ExcellCore.Domain.Entities.MedicationAdministration", b =>
                 {
                     b.HasOne("ExcellCore.Domain.Entities.MedicationOrder", null)
@@ -1632,6 +1847,256 @@ namespace ExcellCore.Domain.Data.Migrations
 
                     b.Navigation("Audit")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.LabOrder", b =>
+                {
+                    b.OwnsOne("ExcellCore.Domain.Entities.AuditTrail", "Audit", b1 =>
+                        {
+                            b1.Property<Guid>("LabOrderId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("CreatedBy")
+                                .IsRequired()
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime>("CreatedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ModifiedBy")
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime?>("ModifiedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("SourceModule")
+                                .IsRequired()
+                                .HasMaxLength(128)
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("LabOrderId");
+
+                            b1.ToTable("LabOrders");
+
+                            b1.WithOwner()
+                                .HasForeignKey("LabOrderId");
+                        });
+
+                    b.Navigation("Audit")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.OrderResult", b =>
+                {
+                    b.OwnsOne("ExcellCore.Domain.Entities.AuditTrail", "Audit", b1 =>
+                        {
+                            b1.Property<Guid>("OrderResultId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("CreatedBy")
+                                .IsRequired()
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime>("CreatedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ModifiedBy")
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime?>("ModifiedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("SourceModule")
+                                .IsRequired()
+                                .HasMaxLength(128)
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("OrderResultId");
+
+                            b1.ToTable("OrderResults");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderResultId");
+                        });
+
+                    b.Navigation("Audit")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.OrderSet", b =>
+                {
+                    b.OwnsOne("ExcellCore.Domain.Entities.AuditTrail", "Audit", b1 =>
+                        {
+                            b1.Property<Guid>("OrderSetId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("CreatedBy")
+                                .IsRequired()
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime>("CreatedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ModifiedBy")
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime?>("ModifiedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("SourceModule")
+                                .IsRequired()
+                                .HasMaxLength(128)
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("OrderSetId");
+
+                            b1.ToTable("OrderSets");
+
+                            b1.WithOwner()
+                                .HasForeignKey("OrderSetId");
+                        });
+
+                    b.Navigation("Audit")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Ward", b =>
+                {
+                    b.OwnsOne("ExcellCore.Domain.Entities.AuditTrail", "Audit", b1 =>
+                        {
+                            b1.Property<Guid>("WardId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("CreatedBy")
+                                .IsRequired()
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime>("CreatedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ModifiedBy")
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime?>("ModifiedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("SourceModule")
+                                .IsRequired()
+                                .HasMaxLength(128)
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("WardId");
+
+                            b1.ToTable("Wards");
+
+                            b1.WithOwner()
+                                .HasForeignKey("WardId");
+                        });
+
+                    b.Navigation("Audit")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Room", b =>
+                {
+                    b.HasOne("ExcellCore.Domain.Entities.Ward", "Ward")
+                        .WithMany("Rooms")
+                        .HasForeignKey("WardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("ExcellCore.Domain.Entities.AuditTrail", "Audit", b1 =>
+                        {
+                            b1.Property<Guid>("RoomId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("CreatedBy")
+                                .IsRequired()
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime>("CreatedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ModifiedBy")
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime?>("ModifiedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("SourceModule")
+                                .IsRequired()
+                                .HasMaxLength(128)
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("RoomId");
+
+                            b1.ToTable("Rooms");
+
+                            b1.WithOwner()
+                                .HasForeignKey("RoomId");
+                        });
+
+                    b.Navigation("Audit")
+                        .IsRequired();
+
+                    b.Navigation("Ward");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Bed", b =>
+                {
+                    b.HasOne("ExcellCore.Domain.Entities.Room", "Room")
+                        .WithMany("Beds")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("ExcellCore.Domain.Entities.AuditTrail", "Audit", b1 =>
+                        {
+                            b1.Property<Guid>("BedId")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("CreatedBy")
+                                .IsRequired()
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime>("CreatedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ModifiedBy")
+                                .HasMaxLength(64)
+                                .HasColumnType("TEXT");
+
+                            b1.Property<DateTime?>("ModifiedOnUtc")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("SourceModule")
+                                .IsRequired()
+                                .HasMaxLength(128)
+                                .HasColumnType("TEXT");
+
+                            b1.HasKey("BedId");
+
+                            b1.ToTable("Beds");
+
+                            b1.WithOwner()
+                                .HasForeignKey("BedId");
+                        });
+
+                    b.Navigation("Audit")
+                        .IsRequired();
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("ExcellCore.Domain.Entities.ReportingDashboard", b =>
@@ -2119,6 +2584,26 @@ namespace ExcellCore.Domain.Data.Migrations
                     b.Navigation("Rates");
                 });
 
+            modelBuilder.Entity("ExcellCore.Domain.Entities.LabOrder", b =>
+                {
+                    b.Navigation("Audit")
+                        .IsRequired();
+
+                    b.Navigation("Results");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.OrderResult", b =>
+                {
+                    b.Navigation("Audit")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.OrderSet", b =>
+                {
+                    b.Navigation("Audit")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ExcellCore.Domain.Entities.MedicationOrder", b =>
                 {
                     b.Navigation("Administrations");
@@ -2129,6 +2614,16 @@ namespace ExcellCore.Domain.Data.Migrations
             modelBuilder.Entity("ExcellCore.Domain.Entities.Party", b =>
                 {
                     b.Navigation("Identifiers");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Room", b =>
+                {
+                    b.Navigation("Beds");
+                });
+
+            modelBuilder.Entity("ExcellCore.Domain.Entities.Ward", b =>
+                {
+                    b.Navigation("Rooms");
                 });
 
             modelBuilder.Entity("ExcellCore.Domain.Entities.RetailTransaction", b =>
