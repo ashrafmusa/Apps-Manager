@@ -1,6 +1,6 @@
 # ExcellCore Modular ERP
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/ashrafmusa/Apps-Manager/actions/workflows/ci.yml/badge.svg)](https://github.com/ashrafmusa/Apps-Manager/actions/workflows/ci.yml)
 
 ExcellCore is a Windows desktop ERP framework focused on modular growth. Each business capability is delivered as a plug-in module that the shell discovers and activates at runtime. The current solution ships two core modules—Master Identity Registry and Agreement Engine—backed by a shared domain, persistence layer, and infrastructure services.
 

@@ -105,6 +105,16 @@ When you fix any issue document the remediation sequence and capture it here so 
 - [ ] Interoperability: FHIR/HL7v2 gateways for ADT/ORM/ORU/SIU, MPI alignment, and document exchange (CCD/CCDA stubs).
 - [ ] Security/Compliance/SRE: authn/z (SSO/MFA/roles), privacy controls, retention/backup/DR, monitoring/SLOs, and deployment packaging.
 
+### HIS Delivery Sprints (Plan)
+- [ ] Sprint 1 – ADT Foundation (Owner: Arch/Clinical): wards/rooms/beds entities + migration; ADT service (admit/transfer/discharge) with audit trails; bed board VM with occupancy/isolation telemetry. AC: A12/A13-equivalent events persisted; bed board reflects census; telemetry emits occupancy metrics.
+- [ ] Sprint 2 – Orders & Results (Owner: Clinical Integration): LIS/RIS order routing interfaces and stubs; result ingestion with ACK/ERR; order set definitions. AC: place order → serialized envelope; ingest ORU maps to order, marks status, records acknowledgment.
+- [ ] Sprint 3 – Clinical Documentation (Owner: Clinical Apps): note templates (H&P/progress/discharge/consent) with versioning, signatures/attestations, PDF export bound to encounter. AC: create/attest note with version increment; PDF stored with audit.
+- [ ] Sprint 4 – MAR/Medication Safety (Owner: Pharmacy/Clinical): MAR shift views, overdue cues, barcode scanning hook points, allergy/clinical rules checks, IV/titration support. AC: administration logged only after rule check passes; overdue queue populates; barcode hook callable.
+- [ ] Sprint 5 – Scheduling & Hand-offs (Owner: Clinical Ops): procedure/consult scheduling with resources (room/device/provider), waitlist/overbook rules, hand-off summaries. AC: schedule prevents resource collisions; hand-off includes recent vitals/orders.
+- [ ] Sprint 6 – Billing/Revenue (Owner: Revenue): charge capture from administrations/procedures/docs, coding support, claim prep/edits, reconciliation. AC: admin/procedure triggers charge entry; claim export stub produced; edits audited.
+- [ ] Sprint 7 – Interoperability (Owner: Integration): FHIR/HL7v2 gateways for ADT/ORM/ORU/SIU, MPI alignment, CCD/CCDA stub export. AC: ADT in/out processed; identity reconciled; CCD generated per encounter.
+- [ ] Sprint 8 – Security/Compliance/SRE (Owner: Platform): authn/z (SSO/MFA/roles), privacy controls, retention/backup/DR, monitoring/SLOs, deployment packaging. AC: role-based access enforced; backups/restores validated; health endpoints monitored.
+
 ## Phase 1 Smoke Checklist (Published Build)
 - Launch from [publish/ExcellCore.Shell/win-x64](publish/ExcellCore.Shell/win-x64); confirm migrations apply and the shell health banner settles green.
 - Clinical journey: CPOE order → dispense → administer; verify the timeline updates, severity badges render, and reminders surface.
