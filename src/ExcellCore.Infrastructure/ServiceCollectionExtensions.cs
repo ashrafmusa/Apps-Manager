@@ -34,6 +34,7 @@ public static class ServiceCollectionExtensions
         services.TryAddSingleton<IRetailOperationsService, RetailOperationsService>();
         services.TryAddSingleton<IClinicalWorkflowService, ClinicalWorkflowService>();
         services.TryAddSingleton<ICorporatePortfolioService, CorporatePortfolioService>();
+        services.TryAddSingleton<IOrdersService, OrdersService>();
         services.TryAddSingleton<IReportingService, ReportingService>();
         services.TryAddSingleton<IReportingExportService, ReportingExportService>();
         services.TryAddSingleton<ISlaReportingService, SlaReportingService>();

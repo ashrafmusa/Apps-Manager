@@ -25,6 +25,7 @@ public sealed class SmokeTests : IDisposable
     private readonly SequentialGuidGenerator _guidGenerator;
     private readonly ClinicalWorkflowService _clinical;
     private readonly RetailOperationsService _retail;
+    private readonly OrdersService _orders;
     private readonly ReportingService _reporting;
     private readonly ReportingExportService _export;
     private readonly TelemetryService _telemetry;
@@ -38,12 +39,60 @@ public sealed class SmokeTests : IDisposable
         _guidGenerator = new SequentialGuidGenerator();
         _clinical = new ClinicalWorkflowService(_factory, _guidGenerator);
         _retail = new RetailOperationsService(_factory, _guidGenerator);
+        _orders = new OrdersService(_factory, _guidGenerator);
         _reporting = new ReportingService(_factory, _guidGenerator);
         _export = new ReportingExportService(_factory, _guidGenerator);
         _telemetry = new TelemetryService(_factory, _guidGenerator);
         _syncProvider = new DeltaSyncProvider(_factory, new ConflictResolverService(_factory));
         _transportAdapter = new JsonSyncTransportAdapter(_syncProvider, "SmokeSite", "SmokeDevice");
         _artifactRoot = InitializeArtifactRoot();
+    }
+
+    [Fact]
+    public async Task OrdersService_PlacesOrders_And_IngestsResults()
+    {
+        var placed = await _orders.PlaceLabOrderAsync(new PlaceLabOrderRequest(
+            "CBC",
+            "Smoke Patient",
+            "LIS",
+            "EXT-123",
+            "Dr. Lab",
+            "STAT"));
+
+        Assert.NotNull(placed);
+        Assert.StartsWith("LAB-", placed.OrderNumber, StringComparison.Ordinal);
+        Assert.Equal("Submitted", placed.Status);
+
+        var ingested = await _orders.IngestResultAsync(new IngestResultRequest(
+            placed.OrderNumber,
+            "HGB",
+            "13.1",
+            "Final",
+            DateTime.UtcNow,
+            "g/dL",
+            "12-16",
+            "Analyzer",
+            true));
+
+        Assert.Equal("Final", ingested.ResultStatus);
+        Assert.Equal("HGB", ingested.ResultCode);
+
+        var dashboard = await _orders.GetOrdersAsync();
+        var stored = dashboard.Orders.First(o => o.OrderNumber == placed.OrderNumber);
+        Assert.Equal("Final", stored.Status);
+        Assert.Single(stored.Results);
+
+        await using var context = await _factory.CreateDbContextAsync();
+        var orderEntity = await context.LabOrders.Include(o => o.Results).FirstAsync(o => o.LabOrderId == placed.LabOrderId);
+        Assert.Equal("Final", orderEntity.Status);
+        Assert.Single(orderEntity.Results);
+
+        var telemetry = await context.TelemetryEvents
+            .Where(e => e.EventType == "LabOrderOutbound" || e.EventType == "LabResultAck")
+            .ToListAsync();
+
+        Assert.Contains(telemetry, e => e.EventType == "LabOrderOutbound");
+        Assert.Contains(telemetry, e => e.EventType == "LabResultAck");
     }
 
     [Fact]

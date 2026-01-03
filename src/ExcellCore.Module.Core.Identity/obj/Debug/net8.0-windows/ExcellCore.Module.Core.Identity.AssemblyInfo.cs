@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExcellCore.Module.Core.Identity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32e4e82d6602db0d43b9612636ed39941d7b9eb2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+207de3a92aa4bc9d21feecaea6020e34664b5a34")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExcellCore.Module.Core.Identity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExcellCore.Module.Core.Identity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
